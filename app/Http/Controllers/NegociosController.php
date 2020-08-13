@@ -15,8 +15,9 @@ class NegociosController extends Controller
      */
     public function index()
     {
-        return response()->json(['status'=>'ok','data'=>DB::table('lista_negocios')->get()], 200);
-        //return response()->json(['status'=>'ok','data'=>negocios::all()], 200);
+        //return response()->json(['status'=>'ok','data'=>DB::table('lista_negocios')->get()], 200);
+        return response()->json(['status'=>'ok','data'=>negocios::all()], 200);
+        //return response()->json(negocios::all(), 200);
     }
 
     /**
@@ -38,7 +39,11 @@ class NegociosController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'img' => 'required|image|mimes:jpeg,png,jpg,svg|max:2048',
+            'id_usuario'  => 'required',
+            'nombre'  => 'required',
+            'pais'  => 'required',
+            'ciudad'  => 'required',
+            'img' => 'image|mimes:jpeg,png,jpg,svg|max:2048',
         ]);
 
         $imageName = time().$request->nombre.'.'.$request->img->extension();
@@ -58,6 +63,11 @@ class NegociosController extends Controller
             'facebook'  => $request->facebook,
             'instagram'  => $request->instagram,
             'whatsapp'   => $request->whatsapp,
+            'valoracion_1'   => $request->valoracion_1,
+            'valoracion_2'   => $request->valoracion_2,
+            'valoracion_3'   => $request->valoracion_3,
+            'valoracion_4'   => $request->valoracion_4,
+            'valoracion_5'   => $request->valoracion_5,
         ]);
 
         $negocios->save();
@@ -81,6 +91,16 @@ class NegociosController extends Controller
 		return response()->json(['status'=>'ok','data'=>$negocio],200);
     }
 
+    public function buscar($busq)
+    {
+        $negocios = DB::table('negocios')
+        ->orWhere('nombre', 'like', '%'.$busq.'%')
+        ->orWhere('descripcion', 'like', '%'.$busq.'%')
+        ->orWhere('ciudad', 'like', '%'.$busq.'%')
+        ->orWhere('pais', 'like', '%'.$busq.'%')
+        ->skip(0)->take(5)->get();
+		return response()->json(['status'=>'ok','data'=>$negocios],200);
+    }
     /**
      * Show the form for editing the specified resource.
      *
@@ -118,6 +138,12 @@ class NegociosController extends Controller
         $negocios->facebook = $request->facebook;
         $negocios->instagram = $request->instagram;
         $negocios->whatsapp = $request->whatsapp;
+
+        $negocios->valoracion_1 = $request->valoracion_1;
+        $negocios->valoracion_2 = $request->valoracion_2;
+        $negocios->valoracion_3 = $request->valoracion_3;
+        $negocios->valoracion_4 = $request->valoracion_4;
+        $negocios->valoracion_5 = $request->valoracion_5;
 
         $negocios->save();
 

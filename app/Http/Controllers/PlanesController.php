@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\planes;
 use Illuminate\Http\Request;
+//use Illuminate\Routing\UrlGenerator;
 
 class PlanesController extends Controller
 {
@@ -114,5 +115,12 @@ class PlanesController extends Controller
         $plan->delete();
         return response()->json([
             'message' => 'plan eliminado!'], 200);
+    }
+
+    public function prueba()
+    {
+        //$url = new UrlGenerator();
+        $url_api = url()->to('/api/validar_email');
+        return response()->json(['success'=>date("Y-m-d H:i:s", time())]); 
     }
 }
