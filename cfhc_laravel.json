@@ -1,0 +1,3590 @@
+{
+	"info": {
+		"_postman_id": "7caabca7-e50e-48c8-82fa-624bd1a0de22",
+		"name": "CFHC LARAVEL",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Tipo Usuario",
+			"item": [
+				{
+					"name": "Listar Tipo Usuarios",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "104.197.10.168/api//api/tipo_usuario",
+							"host": [
+								"192",
+								"168",
+								"1",
+								"15"
+							],
+							"port": "80",
+							"path": [
+								"api",
+								"tipo_usuario"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Tipo Usuario por Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "104.197.10.168/api//api/tipo_usuario/1",
+							"host": [
+								"104.197.10.168"
+							],
+							"port": "80",
+							"path": [
+								"api",
+								"tipo_usuario",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Registrar Tipo Usuario",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"nombre\" : \"Operario de Bar\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "104.197.10.168/api/tipo_usuario",
+							"host": [
+								"104",
+								"197",
+								"10",
+								"168"
+							],
+							"path": [
+								"api",
+								"tipo_usuario"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar Tipo Usuario",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"nombre\" : \"Admin\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "104.197.10.168/api//api/tipo_usuario/1",
+							"host": [
+								"104.197.10.168"
+							],
+							"port": "80",
+							"path": [
+								"api",
+								"tipo_usuario",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Borrar Tipo Usuario",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "104.197.10.168/api//api/tipo_usuario/1",
+							"host": [
+								"104.197.10.168"
+							],
+							"port": "80",
+							"path": [
+								"api",
+								"tipo_usuario",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Usuarios",
+			"item": [
+				{
+					"name": "detalles",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiYWE1ZmUxOWE1ZTk5MTliOGQ4NGQ3Yzg4MGM3MmUxOWIzZGY5NmMyYTQ0ZWQ3NzhlYzA3MWNkYjBhMDc3OGY1NmZjNmRhOGE4NGE2MDQ4Y2IiLCJpYXQiOjE1OTc3OTM1NjksIm5iZiI6MTU5Nzc5MzU2OSwiZXhwIjoxNjI5MzI5NTY5LCJzdWIiOiIxNCIsInNjb3BlcyI6W119.R8ZHNOGougdKHBFq3P29hWqb1VWCWBxjiajYR-7jtAdOXBlkjdnPbyeGMQ7cshUz4ztjWHcaKPSkOM8JulyteWTlREOr51qSQzSX_o655qmsSEjn2qmKdQdJNxG9r0peBlGTg4Fj_6RUfVOD1pdvZuIVF-Z6gl2ji5JvnTCIvQ2HAKvoh1s-yljFYTFMaRqLkcU7pBOSRJZWCebA7lUDh-DDIRUk_EP9De4SIY06vZitw4we8P09B3g8kGJMvNuDl_AkUwp68WbfokzPGdZQn5uk1ZEeHYsnr4FGC5UF3KomHFhxGqw4jOEscsCn0Xoa3jvLpkzxyJ7t1I1p6Iv1mMR4hFEpoWohAnhcG8UGguy9gauD8gB52ZBWGgzP7SxcFeeF8umBeTGkMQIZuCN7A0raWmvuY9QaZ76bYbaj83TYsqNsheVsnHBKLon9R3WjasYg0I8wul0GTXESidj6XPA77wUZKaVsR-0PHikLXxRYemqLxnFvWMC0mrxPSfkuwtVE_nDMTzwJhrrl_LmfTmiSDh96T6PHyIiINbAdk-PR_uMZj16bBttsOyAw2RPWejUUmYVnv57xtZjcHmMMV6bepUmIw1osAxdXThbiE_XjVDjbfHuEgCVI8jS2uPSyi3G9RSa0SF63SN5Al4FQYirgBPFlHAbDIbKrFLjZNVs",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "104.197.10.168/api//api/details",
+							"host": [
+								"192",
+								"168",
+								"1",
+								"15"
+							],
+							"port": "80",
+							"path": [
+								"api",
+								"details"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Registrar Usuario",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"id_tipo_usuario\" : 1,\n\t\"apellidos\" : \"Cuenca Meza\",\n\t\"nombres\" : \"Franklin Andreé\",\n\t\"email\" : \"darkmyes@gmail.com\",\n\t\"password\" : \"12345678\",\n\t\"c_password\" : \"12345678\"\n}"
+						},
+						"url": {
+							"raw": "http://104.197.10.168/api//api/register",
+							"protocol": "http",
+							"host": [
+								"192",
+								"168",
+								"1",
+								"15"
+							],
+							"port": "80",
+							"path": [
+								"api",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"email\" : \"andreecuenca1999@gmail.com\",\n\t\"password\" : \"1234\"\n}"
+						},
+						"url": {
+							"raw": "http://104.197.10.168/api/login",
+							"protocol": "http",
+							"host": [
+								"104",
+								"197",
+								"10",
+								"168"
+							],
+							"path": [
+								"api",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar Usuario",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"id_usuario\" : 2,\n\t\"cedula\" : \"1314876580\",\n\t\"apellido_paterno\" : \"Cuenca\",\n\t\"apellido_materno\" : \"Meza\",\n\t\"nombre\" : \"Franklin Andreé\"\n}"
+						},
+						"url": {
+							"raw": "cognitive-food-healthcare.edu.ec/api/usuarios.php",
+							"host": [
+								"cognitive-food-healthcare",
+								"edu",
+								"ec"
+							],
+							"path": [
+								"api",
+								"usuarios.php"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Borrar Usuario",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"id_usuario\" : 3\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "cognitive-food-healthcare.edu.ec/api/usuarios.php",
+							"host": [
+								"cognitive-food-healthcare",
+								"edu",
+								"ec"
+							],
+							"path": [
+								"api",
+								"usuarios.php"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "cambiarPass",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiYWE1ZmUxOWE1ZTk5MTliOGQ4NGQ3Yzg4MGM3MmUxOWIzZGY5NmMyYTQ0ZWQ3NzhlYzA3MWNkYjBhMDc3OGY1NmZjNmRhOGE4NGE2MDQ4Y2IiLCJpYXQiOjE1OTc3OTM1NjksIm5iZiI6MTU5Nzc5MzU2OSwiZXhwIjoxNjI5MzI5NTY5LCJzdWIiOiIxNCIsInNjb3BlcyI6W119.R8ZHNOGougdKHBFq3P29hWqb1VWCWBxjiajYR-7jtAdOXBlkjdnPbyeGMQ7cshUz4ztjWHcaKPSkOM8JulyteWTlREOr51qSQzSX_o655qmsSEjn2qmKdQdJNxG9r0peBlGTg4Fj_6RUfVOD1pdvZuIVF-Z6gl2ji5JvnTCIvQ2HAKvoh1s-yljFYTFMaRqLkcU7pBOSRJZWCebA7lUDh-DDIRUk_EP9De4SIY06vZitw4we8P09B3g8kGJMvNuDl_AkUwp68WbfokzPGdZQn5uk1ZEeHYsnr4FGC5UF3KomHFhxGqw4jOEscsCn0Xoa3jvLpkzxyJ7t1I1p6Iv1mMR4hFEpoWohAnhcG8UGguy9gauD8gB52ZBWGgzP7SxcFeeF8umBeTGkMQIZuCN7A0raWmvuY9QaZ76bYbaj83TYsqNsheVsnHBKLon9R3WjasYg0I8wul0GTXESidj6XPA77wUZKaVsR-0PHikLXxRYemqLxnFvWMC0mrxPSfkuwtVE_nDMTzwJhrrl_LmfTmiSDh96T6PHyIiINbAdk-PR_uMZj16bBttsOyAw2RPWejUUmYVnv57xtZjcHmMMV6bepUmIw1osAxdXThbiE_XjVDjbfHuEgCVI8jS2uPSyi3G9RSa0SF63SN5Al4FQYirgBPFlHAbDIbKrFLjZNVs",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"password\" : \"12345678\",\n\t\"n_password\" : \"123456789\"\n}",
+							"options": {
+								"raw": {}
+							}
+						},
+						"url": {
+							"raw": "http://104.197.10.168/api//api/usuario/cambiar_pass",
+							"protocol": "http",
+							"host": [
+								"192",
+								"168",
+								"1",
+								"15"
+							],
+							"port": "80",
+							"path": [
+								"api",
+								"usuario",
+								"cambiar_pass"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Actividades Cuarentena",
+			"item": [
+				{
+					"name": "Listar Actividades Cuarentena",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "104.197.10.168/api//api/actividades_cuarentena",
+							"host": [
+								"104.197.10.168"
+							],
+							"port": "80",
+							"path": [
+								"api",
+								"actividades_cuarentena"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Actividades Cuarentena por ID Usuario",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "104.197.10.168/api//api/actividades_cuarentena/2",
+							"host": [
+								"104.197.10.168"
+							],
+							"port": "80",
+							"path": [
+								"api",
+								"actividades_cuarentena",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Registrar Actividad Cuarentena",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"id_usuario\" : 2,\n\t\"nombre\" : \"limpiar la casa\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "104.197.10.168/api//api/actividades_cuarentena",
+							"host": [
+								"104.197.10.168"
+							],
+							"port": "80",
+							"path": [
+								"api",
+								"actividades_cuarentena"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar Actividad Cuarentena",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"nombre\" : \"Limpiar mi Cuarto\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "104.197.10.168/api//api/actividades_cuarentena/1",
+							"host": [
+								"104.197.10.168"
+							],
+							"port": "80",
+							"path": [
+								"api",
+								"actividades_cuarentena",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Borrar Actividad Cuarentena",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "104.197.10.168/api//api/actividades_cuarentena/1",
+							"host": [
+								"104.197.10.168"
+							],
+							"port": "80",
+							"path": [
+								"api",
+								"actividades_cuarentena",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Alimentos Cuarentena",
+			"item": [
+				{
+					"name": "Listar Alimentos Cuarentena",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "104.197.10.168/api//api/alimentos_cuarentena",
+							"host": [
+								"104.197.10.168"
+							],
+							"port": "80",
+							"path": [
+								"api",
+								"alimentos_cuarentena"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Alimentos Cuarentena por ID Usuario",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "104.197.10.168/api//api/alimentos_cuarentena/2",
+							"host": [
+								"104.197.10.168"
+							],
+							"port": "80",
+							"path": [
+								"api",
+								"alimentos_cuarentena",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Registrar Alimento Cuarentena",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"id_usuario\" : 2,\n\t\"nombre\" : \"Sopas\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "104.197.10.168/api//api/alimentos_cuarentena",
+							"host": [
+								"104.197.10.168"
+							],
+							"port": "80",
+							"path": [
+								"api",
+								"alimentos_cuarentena"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar Alimento Cuarentena Copy",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\": \"Sopas x2\"\r\n}"
+						},
+						"url": {
+							"raw": "104.197.10.168/api//api/alimentos_cuarentena/1",
+							"host": [
+								"104.197.10.168"
+							],
+							"port": "80",
+							"path": [
+								"api",
+								"alimentos_cuarentena",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Borrar Alimento Cuarentena Copy Copy",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"id_alimentos\" : 2\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "104.197.10.168/api//api/alimentos_cuarentena/1",
+							"host": [
+								"104.197.10.168"
+							],
+							"port": "80",
+							"path": [
+								"api",
+								"alimentos_cuarentena",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Alergias",
+			"item": [
+				{
+					"name": "Listar Alergias",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "104.197.10.168/api//api/alergias",
+							"host": [
+								"192",
+								"168",
+								"1",
+								"15"
+							],
+							"port": "80",
+							"path": [
+								"api",
+								"alergias"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Alergias por ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "104.197.10.168/api//api/alergias/1",
+							"host": [
+								"104.197.10.168"
+							],
+							"port": "80",
+							"path": [
+								"api",
+								"alergias",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Alergias por Nombre",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "104.197.10.168/api//api/alergias/nombre/lac",
+							"host": [
+								"104.197.10.168"
+							],
+							"port": "80",
+							"path": [
+								"api",
+								"alergias",
+								"nombre",
+								"lac"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Registrar Alergia",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"nombre\" : \"Lacteos\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "104.197.10.168/api//api/alergias",
+							"host": [
+								"104.197.10.168"
+							],
+							"port": "80",
+							"path": [
+								"api",
+								"alergias"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar Alergia",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\": \"Lácteos\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "104.197.10.168/api//api/alergias/2",
+							"host": [
+								"104.197.10.168"
+							],
+							"port": "80",
+							"path": [
+								"api",
+								"alergias",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Borrar Alergia Copy Copy",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "104.197.10.168/api//api/alergias/1",
+							"host": [
+								"104.197.10.168"
+							],
+							"port": "80",
+							"path": [
+								"api",
+								"alergias",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Enfermedades",
+			"item": [
+				{
+					"name": "Listar Enfermedades",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "104.197.10.168/api//api/enfermedades",
+							"host": [
+								"104.197.10.168"
+							],
+							"port": "80",
+							"path": [
+								"api",
+								"enfermedades"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Enfermedad por ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "104.197.10.168/api//api/enfermedades/1",
+							"host": [
+								"104.197.10.168"
+							],
+							"port": "80",
+							"path": [
+								"api",
+								"enfermedades",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Enfermedades por Nombre",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "104.197.10.168/api//api/enfermedades/nombre/dia",
+							"host": [
+								"104.197.10.168"
+							],
+							"port": "80",
+							"path": [
+								"api",
+								"enfermedades",
+								"nombre",
+								"dia"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Registrar Enfermedad",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"nombre\" : \"diabtes\"\n}"
+						},
+						"url": {
+							"raw": "104.197.10.168/api//api/enfermedades",
+							"host": [
+								"104.197.10.168"
+							],
+							"port": "80",
+							"path": [
+								"api",
+								"enfermedades"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar Enfermedad",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\": \"Diabetes\"\r\n}"
+						},
+						"url": {
+							"raw": "104.197.10.168/api//api/enfermedades/2",
+							"host": [
+								"104.197.10.168"
+							],
+							"port": "80",
+							"path": [
+								"api",
+								"enfermedades",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Borrar Enfermedad",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id_enfermedad\": 2\r\n}"
+						},
+						"url": {
+							"raw": "104.197.10.168/api//api/enfermedades/1",
+							"host": [
+								"104.197.10.168"
+							],
+							"port": "80",
+							"path": [
+								"api",
+								"enfermedades",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Estilos Vida",
+			"item": [
+				{
+					"name": "Listar Estilos Vida",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "104.197.10.168/api//api/estilos_vida",
+							"host": [
+								"104.197.10.168"
+							],
+							"port": "80",
+							"path": [
+								"api",
+								"estilos_vida"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Estilo Vida por ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "104.197.10.168/api//api/estilos_vida/1",
+							"host": [
+								"104.197.10.168"
+							],
+							"port": "80",
+							"path": [
+								"api",
+								"estilos_vida",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Estilos Vida por Nombre",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "104.197.10.168/api//api/estilos_vida/nombre/vega",
+							"host": [
+								"104.197.10.168"
+							],
+							"port": "80",
+							"path": [
+								"api",
+								"estilos_vida",
+								"nombre",
+								"vega"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Registrar Estilo Vida",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"nombre\" : \"vegano\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "104.197.10.168/api//api/estilos_vida",
+							"host": [
+								"104.197.10.168"
+							],
+							"port": "80",
+							"path": [
+								"api",
+								"estilos_vida"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar Estilo Vida",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"id_estilo_vida\": 1,\n\t\"nombre\" : \"Vegano\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "104.197.10.168/api//api/estilos_vida/2",
+							"host": [
+								"104.197.10.168"
+							],
+							"port": "80",
+							"path": [
+								"api",
+								"estilos_vida",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Borrar Estilo Vida",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"id_estilo_vida\": 2\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "104.197.10.168/api//api/estilos_vida/1",
+							"host": [
+								"104.197.10.168"
+							],
+							"port": "80",
+							"path": [
+								"api",
+								"estilos_vida",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Categorias Alimentos",
+			"item": [
+				{
+					"name": "Listar Categoria Alimentos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "104.197.10.168/api//api/categorias_alimento",
+							"host": [
+								"104.197.10.168"
+							],
+							"port": "80",
+							"path": [
+								"api",
+								"categorias_alimento"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Categoria Alimento por ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "104.197.10.168/api//api/categorias_alimento/1",
+							"host": [
+								"104.197.10.168"
+							],
+							"port": "80",
+							"path": [
+								"api",
+								"categorias_alimento",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Categorias Alimentos por Nombre",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "104.197.10.168/api//api/categorias_alimento/nombre/ca",
+							"host": [
+								"104.197.10.168"
+							],
+							"port": "80",
+							"path": [
+								"api",
+								"categorias_alimento",
+								"nombre",
+								"ca"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Registrar Categoria Alimento",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"nombre\" : \"Carnes\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "104.197.10.168/api//api/categorias_alimento",
+							"host": [
+								"104.197.10.168"
+							],
+							"port": "80",
+							"path": [
+								"api",
+								"categorias_alimento"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar Categoria Alimento",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"id_categoria_alimento\": 1,\r\n        \"nombre\": \"Carnes\"\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "104.197.10.168/api//api/categorias_alimento/2",
+							"host": [
+								"104.197.10.168"
+							],
+							"port": "80",
+							"path": [
+								"api",
+								"categorias_alimento",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Borrar Categoria Alimento",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id_categoria_alimento\": 2\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "104.197.10.168/api//api/categorias_alimento/1",
+							"host": [
+								"104.197.10.168"
+							],
+							"port": "80",
+							"path": [
+								"api",
+								"categorias_alimento",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Preferencias",
+			"item": [
+				{
+					"name": "Listar Preferencias",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "104.197.10.168/api//api/preferencias",
+							"host": [
+								"104.197.10.168"
+							],
+							"port": "80",
+							"path": [
+								"api",
+								"preferencias"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Preferenia por ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "104.197.10.168/api//api/preferencias/usuario/2/categoria/2",
+							"host": [
+								"104.197.10.168"
+							],
+							"port": "80",
+							"path": [
+								"api",
+								"preferencias",
+								"usuario",
+								"2",
+								"categoria",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Preferencias por Usuario",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "104.197.10.168/api//api/preferencias/usuario/2",
+							"host": [
+								"104.197.10.168"
+							],
+							"port": "80",
+							"path": [
+								"api",
+								"preferencias",
+								"usuario",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Registrar Prefrencia",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"id_categoria_alimento\" : 2,\n\t\"id_usuario\" : 2,\n\t\"valor\" : 5\n}"
+						},
+						"url": {
+							"raw": "104.197.10.168/api//api/preferencias",
+							"host": [
+								"104.197.10.168"
+							],
+							"port": "80",
+							"path": [
+								"api",
+								"preferencias"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar Preferencia",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"valor\": 4\r\n}"
+						},
+						"url": {
+							"raw": "104.197.10.168/api//api/preferencias/usuario/2/categoria/2",
+							"host": [
+								"104.197.10.168"
+							],
+							"port": "80",
+							"path": [
+								"api",
+								"preferencias",
+								"usuario",
+								"2",
+								"categoria",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Borrar Preferencia",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"id_categoria_alimento\" : 3,\n\t\"id_usuario\" : 2\n}"
+						},
+						"url": {
+							"raw": "104.197.10.168/api//api/preferencias/usuario/2/categoria/2",
+							"host": [
+								"104.197.10.168"
+							],
+							"port": "80",
+							"path": [
+								"api",
+								"preferencias",
+								"usuario",
+								"2",
+								"categoria",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Alergias Usuario",
+			"item": [
+				{
+					"name": "Listar Alergias Usuario",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "104.197.10.168/api//api/alergias_usuario",
+							"host": [
+								"192",
+								"168",
+								"1",
+								"15"
+							],
+							"port": "80",
+							"path": [
+								"api",
+								"alergias_usuario"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Alergias por ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "104.197.10.168/api//api/alergias_usuario/usuario/2/alergia/1",
+							"host": [
+								"104.197.10.168"
+							],
+							"port": "80",
+							"path": [
+								"api",
+								"alergias_usuario",
+								"usuario",
+								"2",
+								"alergia",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Alergias por Usuario",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "104.197.10.168/api//api/alergias_usuario/usuario/2",
+							"host": [
+								"104.197.10.168"
+							],
+							"port": "80",
+							"path": [
+								"api",
+								"alergias_usuario",
+								"usuario",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Registrar Alergia Usuario",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"id_alergia\" : 1,\n\t\"id_usuario\" : 2\n}",
+							"options": {
+								"raw": {}
+							}
+						},
+						"url": {
+							"raw": "104.197.10.168/api//api/alergias_usuario",
+							"host": [
+								"104.197.10.168"
+							],
+							"port": "80",
+							"path": [
+								"api",
+								"alergias_usuario"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Borrar Alergia Usuario",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"id_alergia\" : 2,\n\t\"id_usuario\" : 2\n}",
+							"options": {
+								"raw": {}
+							}
+						},
+						"url": {
+							"raw": "104.197.10.168/api//api/alergias_usuario/usuario/2/alergia/1",
+							"host": [
+								"104.197.10.168"
+							],
+							"port": "80",
+							"path": [
+								"api",
+								"alergias_usuario",
+								"usuario",
+								"2",
+								"alergia",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Enfermedades Usuario",
+			"item": [
+				{
+					"name": "Listar Enfermedades Usuario",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "104.197.10.168/api//api/enfermedades_usuario",
+							"host": [
+								"104.197.10.168"
+							],
+							"port": "80",
+							"path": [
+								"api",
+								"enfermedades_usuario"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Enfermedades por ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "104.197.10.168/api//api/enfermedades_usuario/usuario/2/enfermedad/1",
+							"host": [
+								"104.197.10.168"
+							],
+							"port": "80",
+							"path": [
+								"api",
+								"enfermedades_usuario",
+								"usuario",
+								"2",
+								"enfermedad",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Enfermedades por Usuario",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "104.197.10.168/api//api/enfermedades_usuario/usuario/2",
+							"host": [
+								"104.197.10.168"
+							],
+							"port": "80",
+							"path": [
+								"api",
+								"enfermedades_usuario",
+								"usuario",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Registrar Enfermedad Usuario",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"id_enfermedad\" : 1,\n\t\"id_usuario\" : 2\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "104.197.10.168/api//api/enfermedades_usuario",
+							"host": [
+								"104.197.10.168"
+							],
+							"port": "80",
+							"path": [
+								"api",
+								"enfermedades_usuario"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Borrar Enfermedad Usuario",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"id_enfermedad\" : 1,\n\t\"id_usuario\" : 2\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "104.197.10.168/api//api/enfermedades_usuario/usuario/2/enfermedad/1",
+							"host": [
+								"104.197.10.168"
+							],
+							"port": "80",
+							"path": [
+								"api",
+								"enfermedades_usuario",
+								"usuario",
+								"2",
+								"enfermedad",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Estilos VIda Usuario",
+			"item": [
+				{
+					"name": "Listar Estilos Vida Usuario",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "104.197.10.168/api//api/estilos_vida_usuario",
+							"host": [
+								"192",
+								"168",
+								"1",
+								"15"
+							],
+							"port": "80",
+							"path": [
+								"api",
+								"estilos_vida_usuario"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Estilo Vida  por ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "104.197.10.168/api//api/estilos_vida_usuario/usuario/2/estilo_vida/1",
+							"host": [
+								"104.197.10.168"
+							],
+							"port": "80",
+							"path": [
+								"api",
+								"estilos_vida_usuario",
+								"usuario",
+								"2",
+								"estilo_vida",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Estilo Vida por Usuario",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "104.197.10.168/api//api/estilos_vida_usuario/usuario/2",
+							"host": [
+								"104.197.10.168"
+							],
+							"port": "80",
+							"path": [
+								"api",
+								"estilos_vida_usuario",
+								"usuario",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Registrar Estilo Vida Usuario",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"id_estilo_vida\" : 1,\n\t\"id_usuario\" : 2\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "104.197.10.168/api//api/estilos_vida_usuario",
+							"host": [
+								"104.197.10.168"
+							],
+							"port": "80",
+							"path": [
+								"api",
+								"estilos_vida_usuario"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Borrar Estilo Vida Usuario",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"id_estilo_vida\" : 1,\n\t\"id_usuario\" : 2\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "104.197.10.168/api//api/estilos_vida_usuario/usuario/2/estilo_vida/1",
+							"host": [
+								"104.197.10.168"
+							],
+							"port": "80",
+							"path": [
+								"api",
+								"estilos_vida_usuario",
+								"usuario",
+								"2",
+								"estilo_vida",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Productos",
+			"item": [
+				{
+					"name": "Listar Productos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "104.197.10.168/api//api/productos",
+							"host": [
+								"104.197.10.168"
+							],
+							"port": "80",
+							"path": [
+								"api",
+								"productos"
+							],
+							"query": [
+								{
+									"key": "can_delete",
+									"value": "true",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Producto por ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "104.197.10.168/api//api/productos/1",
+							"host": [
+								"104.197.10.168"
+							],
+							"port": "80",
+							"path": [
+								"api",
+								"productos",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Productos por Nombre",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "104.197.10.168/api//api/productos/nombre/sal",
+							"host": [
+								"104.197.10.168"
+							],
+							"port": "80",
+							"path": [
+								"api",
+								"productos",
+								"nombre",
+								"sal"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Registrar Producto",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"nombre\" : \"Salchipapa\"\n}"
+						},
+						"url": {
+							"raw": "104.197.10.168/api//api/productos",
+							"host": [
+								"104.197.10.168"
+							],
+							"port": "80",
+							"path": [
+								"api",
+								"productos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar Producto",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\": \"Gatorade (Grande)\"\r\n}"
+						},
+						"url": {
+							"raw": "104.197.10.168/api//api/productos/1",
+							"host": [
+								"104.197.10.168"
+							],
+							"port": "80",
+							"path": [
+								"api",
+								"productos",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Borrar Producto",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id_producto\": 3\r\n}"
+						},
+						"url": {
+							"raw": "104.197.10.168/api//api/productos/1",
+							"host": [
+								"104.197.10.168"
+							],
+							"port": "80",
+							"path": [
+								"api",
+								"productos",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Bares",
+			"item": [
+				{
+					"name": "Listar Bares",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "104.197.10.168/api//api/bares",
+							"host": [
+								"104.197.10.168"
+							],
+							"port": "80",
+							"path": [
+								"api",
+								"bares"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Bares por ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "104.197.10.168/api//api/bares/1",
+							"host": [
+								"104.197.10.168"
+							],
+							"port": "80",
+							"path": [
+								"api",
+								"bares",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Bares por ID Nombre",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "104.197.10.168/api//api/bares/nombre/infor",
+							"host": [
+								"104.197.10.168"
+							],
+							"port": "80",
+							"path": [
+								"api",
+								"bares",
+								"nombre",
+								"infor"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Registrar Bar",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"nombre\" : \"Bar 5\",\n\t\"id_usuario\" : 2,\n\t\"celular\" : \"0961186713\"\n}"
+						},
+						"url": {
+							"raw": "104.197.10.168/api//api/bares",
+							"host": [
+								"104.197.10.168"
+							],
+							"port": "80",
+							"path": [
+								"api",
+								"bares"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar Bar",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\": \"Bar Informática\",\r\n    \"celular\": \"0961186713\"\r\n}"
+						},
+						"url": {
+							"raw": "104.197.10.168/api//api/bares/2",
+							"host": [
+								"104.197.10.168"
+							],
+							"port": "80",
+							"path": [
+								"api",
+								"bares",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Borrar Bar",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id_bar\": 8\r\n}"
+						},
+						"url": {
+							"raw": "104.197.10.168/api//api/bares/1",
+							"host": [
+								"104.197.10.168"
+							],
+							"port": "80",
+							"path": [
+								"api",
+								"bares",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Bares por usuario",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "104.197.10.168/api//api/bares/usuario/2",
+							"host": [
+								"192",
+								"168",
+								"1",
+								"15"
+							],
+							"port": "80",
+							"path": [
+								"api",
+								"bares",
+								"usuario",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Bares por Token",
+					"request": {
+						"auth": {
+							"type": "apikey"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "104.197.10.168/api//api/bares/token",
+							"host": [
+								"104.197.10.168"
+							],
+							"port": "80",
+							"path": [
+								"api",
+								"bares",
+								"token"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Calificación",
+			"item": [
+				{
+					"name": "Listar Calificacion",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "104.197.10.168/api//api/calificaciones",
+							"host": [
+								"104.197.10.168"
+							],
+							"port": "80",
+							"path": [
+								"api",
+								"calificaciones"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Calificacion por ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "104.197.10.168/api//api/calificaciones/bar/2/usuario/2",
+							"host": [
+								"104.197.10.168"
+							],
+							"port": "80",
+							"path": [
+								"api",
+								"calificaciones",
+								"bar",
+								"2",
+								"usuario",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Calificacion por Bar",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "104.197.10.168/api//api/calificaciones/bar/2",
+							"host": [
+								"104.197.10.168"
+							],
+							"port": "80",
+							"path": [
+								"api",
+								"calificaciones",
+								"bar",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Registrar Calificacion",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"id_bar\" : 2,\n\t\"id_usuario\" : 2,\n\t\"calificacion\" : 3\n}"
+						},
+						"url": {
+							"raw": "104.197.10.168/api//api/calificaciones",
+							"host": [
+								"104.197.10.168"
+							],
+							"port": "80",
+							"path": [
+								"api",
+								"calificaciones"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar Calificacion",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"id_bar\" : 2,\n\t\"id_usuario\" : 2,\n\t\"calificacion\" : 4\n}"
+						},
+						"url": {
+							"raw": "104.197.10.168/api//api/calificaciones",
+							"host": [
+								"104.197.10.168"
+							],
+							"port": "80",
+							"path": [
+								"api",
+								"calificaciones"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Borrar Calificacion",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"id_bar\" : 2,\n\t\"id_usuario\" : 2\n}"
+						},
+						"url": {
+							"raw": "104.197.10.168/api//api/calificaciones/bar/2/usuario/2",
+							"host": [
+								"104.197.10.168"
+							],
+							"port": "80",
+							"path": [
+								"api",
+								"calificaciones",
+								"bar",
+								"2",
+								"usuario",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Lista Productos de Bares",
+			"item": [
+				{
+					"name": "Mostrar Lista Productos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "104.197.10.168/api//api/lista_productos",
+							"host": [
+								"104.197.10.168"
+							],
+							"port": "80",
+							"path": [
+								"api",
+								"lista_productos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Lista Producto por Bar",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "104.197.10.168/api//api/lista_productos/bar/2",
+							"host": [
+								"104.197.10.168"
+							],
+							"port": "80",
+							"path": [
+								"api",
+								"lista_productos",
+								"bar",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Lista Producto por ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "104.197.10.168/api//api/lista_productos/bar/2/producto/2",
+							"host": [
+								"104.197.10.168"
+							],
+							"port": "80",
+							"path": [
+								"api",
+								"lista_productos",
+								"bar",
+								"2",
+								"producto",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Registrar Lista Producto",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"id_bar\" : 2,\n\t\"id_producto\" : 2,\n\t\"precio\" : 1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "104.197.10.168/api//api/lista_productos",
+							"host": [
+								"104.197.10.168"
+							],
+							"port": "80",
+							"path": [
+								"api",
+								"lista_productos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar Lista Producto",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"id_bar\" : 2,\n\t\"id_producto\" : 2,\n\t\"precio\" : 0.55\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "104.197.10.168/api//api/lista_productos",
+							"host": [
+								"104.197.10.168"
+							],
+							"port": "80",
+							"path": [
+								"api",
+								"lista_productos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Borrar Lista Producto",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "104.197.10.168/api//api/lista_productos/bar/2/producto/2",
+							"host": [
+								"104.197.10.168"
+							],
+							"port": "80",
+							"path": [
+								"api",
+								"lista_productos",
+								"bar",
+								"2",
+								"producto",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Menu Diario",
+			"item": [
+				{
+					"name": "Listar Menu Diarios",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "104.197.10.168/api//api/menu_diario",
+							"host": [
+								"104.197.10.168"
+							],
+							"port": "80",
+							"path": [
+								"api",
+								"menu_diario"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Menu Diario por Bar y Fecha",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "104.197.10.168/api//api/menu_diario/bar/2/fecha/2020-06-16",
+							"host": [
+								"104.197.10.168"
+							],
+							"port": "80",
+							"path": [
+								"api",
+								"menu_diario",
+								"bar",
+								"2",
+								"fecha",
+								"2020-06-16"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Menu Diario por Fecha",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "104.197.10.168/api//api/menu_diario/fecha/2020-06-16",
+							"host": [
+								"104.197.10.168"
+							],
+							"port": "80",
+							"path": [
+								"api",
+								"menu_diario",
+								"fecha",
+								"2020-06-16"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Menu DIario por Bar",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "104.197.10.168/api//api/menu_diario/bar/2",
+							"host": [
+								"104.197.10.168"
+							],
+							"port": "80",
+							"path": [
+								"api",
+								"menu_diario",
+								"bar",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Registrar Menu Diario",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id_bar\": 2,\n    \"id_producto\": 2,\n    \"precio\": 2.3,\n    \"fecha\": \"2020-06-16\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "104.197.10.168/api//api/menu_diario",
+							"host": [
+								"104.197.10.168"
+							],
+							"port": "80",
+							"path": [
+								"api",
+								"menu_diario"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar Menu Diario",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"precio\": 2.3,\n    \"fecha\": \"2020-06-16\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "104.197.10.168/api//api/menu_diario/1",
+							"host": [
+								"104.197.10.168"
+							],
+							"port": "80",
+							"path": [
+								"api",
+								"menu_diario",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Borrar Menu Diario",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "104.197.10.168/api//api/menu_diario/1",
+							"host": [
+								"104.197.10.168"
+							],
+							"port": "80",
+							"path": [
+								"api",
+								"menu_diario",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Productos Categoria",
+			"item": [
+				{
+					"name": "Listar Productos Categoria",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "104.197.10.168/api//api/productos_categoria",
+							"host": [
+								"104.197.10.168"
+							],
+							"port": "80",
+							"path": [
+								"api",
+								"productos_categoria"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Producto Categoria por ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "104.197.10.168/api//api/productos_categoria/categoria/2/producto/2",
+							"host": [
+								"104.197.10.168"
+							],
+							"port": "80",
+							"path": [
+								"api",
+								"productos_categoria",
+								"categoria",
+								"2",
+								"producto",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Productos por Categoria",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "104.197.10.168/api//api/productos_categoria/categoria/2",
+							"host": [
+								"104.197.10.168"
+							],
+							"port": "80",
+							"path": [
+								"api",
+								"productos_categoria",
+								"categoria",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Productos por Producto",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "104.197.10.168/api//api/productos_categoria/producto/2",
+							"host": [
+								"104.197.10.168"
+							],
+							"port": "80",
+							"path": [
+								"api",
+								"productos_categoria",
+								"producto",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Registrar Producto Categoria",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"id_categoria\" : 2,\n\t\"id_producto\" : 2\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "104.197.10.168/api//api/productos_categoria",
+							"host": [
+								"104.197.10.168"
+							],
+							"port": "80",
+							"path": [
+								"api",
+								"productos_categoria"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Borrar Producto Categoria",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"id_categoria_alimento\" : 1,\n\t\"id_producto\" : 1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "104.197.10.168/api//api/productos_categoria/categoria/2/producto/2",
+							"host": [
+								"104.197.10.168"
+							],
+							"port": "80",
+							"path": [
+								"api",
+								"productos_categoria",
+								"categoria",
+								"2",
+								"producto",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Compuesto Quimico Organico",
+			"item": [
+				{
+					"name": "Listar Compuestos Quimico Organicos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "104.197.10.168/api//api/componentes",
+							"host": [
+								"104.197.10.168"
+							],
+							"port": "80",
+							"path": [
+								"api",
+								"componentes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Compuesto por ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "104.197.10.168/api//api/componentes/2",
+							"host": [
+								"104.197.10.168"
+							],
+							"port": "80",
+							"path": [
+								"api",
+								"componentes",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Compuesto por Nombre",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "104.197.10.168/api//api/componentes/nombre/nu",
+							"host": [
+								"104.197.10.168"
+							],
+							"port": "80",
+							"path": [
+								"api",
+								"componentes",
+								"nombre",
+								"nu"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Registrar Compuesto",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nombre\": \"nueces\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "104.197.10.168/api//api/componentes",
+							"host": [
+								"104.197.10.168"
+							],
+							"port": "80",
+							"path": [
+								"api",
+								"componentes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar Compuesto",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nombre\": \"Nueces\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "104.197.10.168/api//api/componentes/2",
+							"host": [
+								"104.197.10.168"
+							],
+							"port": "80",
+							"path": [
+								"api",
+								"componentes",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar Compuesto",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "104.197.10.168/api//api/componentes/1",
+							"host": [
+								"104.197.10.168"
+							],
+							"port": "80",
+							"path": [
+								"api",
+								"componentes",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Productos Compuesto Quimico Organico",
+			"item": [
+				{
+					"name": "Listar Compuestos Productos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "104.197.10.168/api//api/componentes_producto",
+							"host": [
+								"104.197.10.168"
+							],
+							"port": "80",
+							"path": [
+								"api",
+								"componentes_producto"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Compuestos Productos por ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "104.197.10.168/api//api/componentes_producto/producto/2/componente/2",
+							"host": [
+								"104.197.10.168"
+							],
+							"port": "80",
+							"path": [
+								"api",
+								"componentes_producto",
+								"producto",
+								"2",
+								"componente",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Compuesto por Producto",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "104.197.10.168/api//api/componentes_producto/producto/2",
+							"host": [
+								"104.197.10.168"
+							],
+							"port": "80",
+							"path": [
+								"api",
+								"componentes_producto",
+								"producto",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Compuesto por Producto y Nombre",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "104.197.10.168/api//api/componentes_producto/producto/2/nombre/nue",
+							"host": [
+								"104.197.10.168"
+							],
+							"port": "80",
+							"path": [
+								"api",
+								"componentes_producto",
+								"producto",
+								"2",
+								"nombre",
+								"nue"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Productos por Compuesto",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "104.197.10.168/api//api/componentes_producto/componente/2",
+							"host": [
+								"104.197.10.168"
+							],
+							"port": "80",
+							"path": [
+								"api",
+								"componentes_producto",
+								"componente",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Productos por Compuesto y Nombre",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "104.197.10.168/api//api/componentes_producto/componente/2/nombre/sal",
+							"host": [
+								"104.197.10.168"
+							],
+							"port": "80",
+							"path": [
+								"api",
+								"componentes_producto",
+								"componente",
+								"2",
+								"nombre",
+								"sal"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Registrar Compuesto Producto",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id_producto\": 2,\n    \"id_componente\": 2 \n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "104.197.10.168/api//api/componentes_producto",
+							"host": [
+								"104.197.10.168"
+							],
+							"port": "80",
+							"path": [
+								"api",
+								"componentes_producto"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Borrar Compuesto Producto",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "104.197.10.168/api//api/componentes_producto/producto/2/componente/2",
+							"host": [
+								"104.197.10.168"
+							],
+							"port": "80",
+							"path": [
+								"api",
+								"componentes_producto",
+								"producto",
+								"2",
+								"componente",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Restricciones",
+			"item": [
+				{
+					"name": "Listar Restricciones",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "104.197.10.168/api//api/restricciones",
+							"host": [
+								"104.197.10.168"
+							],
+							"port": "80",
+							"path": [
+								"api",
+								"restricciones"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar Restricciones Enfermedades",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "104.197.10.168/api//api/restricciones/causante/enfermedad",
+							"host": [
+								"104.197.10.168"
+							],
+							"port": "80",
+							"path": [
+								"api",
+								"restricciones",
+								"causante",
+								"enfermedad"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar Restricciones Nombre Enfermedades",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "104.197.10.168/api//api/restricciones/causante/enfermedad/nombre/dia",
+							"host": [
+								"104.197.10.168"
+							],
+							"port": "80",
+							"path": [
+								"api",
+								"restricciones",
+								"causante",
+								"enfermedad",
+								"nombre",
+								"dia"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar Restricciones Alergias",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "104.197.10.168/api//api/restricciones/causante/alergia",
+							"host": [
+								"104.197.10.168"
+							],
+							"port": "80",
+							"path": [
+								"api",
+								"restricciones",
+								"causante",
+								"alergia"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar Restricciones Nombre  Alergias",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "104.197.10.168/api//api/restricciones/causante/alergia/nombre/lac",
+							"host": [
+								"104.197.10.168"
+							],
+							"port": "80",
+							"path": [
+								"api",
+								"restricciones",
+								"causante",
+								"alergia",
+								"nombre",
+								"lac"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar Restricciones Estilos de Vida",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "104.197.10.168/api//api/restricciones/causante/estilo_vida",
+							"host": [
+								"104.197.10.168"
+							],
+							"port": "80",
+							"path": [
+								"api",
+								"restricciones",
+								"causante",
+								"estilo_vida"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar Restricciones Nombre  Estilos de Vida",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "104.197.10.168/api//api/restricciones/causante/estilo_vida/nombre/veg",
+							"host": [
+								"104.197.10.168"
+							],
+							"port": "80",
+							"path": [
+								"api",
+								"restricciones",
+								"causante",
+								"estilo_vida",
+								"nombre",
+								"veg"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar Restricciones Componente",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "104.197.10.168/api//api/restricciones/restriccion/componente",
+							"host": [
+								"104.197.10.168"
+							],
+							"port": "80",
+							"path": [
+								"api",
+								"restricciones",
+								"restriccion",
+								"componente"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar Restricciones Nombre Componente",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "104.197.10.168/api//api/restricciones/restriccion/componente/nombre/nue",
+							"host": [
+								"104.197.10.168"
+							],
+							"port": "80",
+							"path": [
+								"api",
+								"restricciones",
+								"restriccion",
+								"componente",
+								"nombre",
+								"nue"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar Restricciones Categoria Estilo Vida",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "104.197.10.168/api//api/restricciones/restriccion/categoria_alimento",
+							"host": [
+								"104.197.10.168"
+							],
+							"port": "80",
+							"path": [
+								"api",
+								"restricciones",
+								"restriccion",
+								"categoria_alimento"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar Restricciones Nombre Categoria Estilo Vida",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "104.197.10.168/api//api/restricciones/restriccion/categoria_alimento/nombre/car",
+							"host": [
+								"104.197.10.168"
+							],
+							"port": "80",
+							"path": [
+								"api",
+								"restricciones",
+								"restriccion",
+								"categoria_alimento",
+								"nombre",
+								"car"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar restriccion",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"tipo\": \"completa\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "104.197.10.168/api//api/restricciones/3",
+							"host": [
+								"104.197.10.168"
+							],
+							"port": "80",
+							"path": [
+								"api",
+								"restricciones",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Registrar Restricciones Copy",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id_causante\": 1,\n    \"id_restriccion\": 2,\n    \"tipo\": \"parcial\",\n    \"por\": \"estilo_vida\",\n    \"de\": \"categoria_alimento\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "104.197.10.168/api//api/restricciones",
+							"host": [
+								"104.197.10.168"
+							],
+							"port": "80",
+							"path": [
+								"api",
+								"restricciones"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar Restriccion",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id_causante\": 1,\n    \"id_restriccion\": 2,\n    \"tipo\": \"parcial\",\n    \"por\": \"estilo_vida\",\n    \"de\": \"categoria_alimento\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "104.197.10.168/api//api/restricciones/4",
+							"host": [
+								"104.197.10.168"
+							],
+							"port": "80",
+							"path": [
+								"api",
+								"restricciones",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get 1",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "104.197.10.168/api//api/restricciones/3",
+							"host": [
+								"104.197.10.168"
+							],
+							"port": "80",
+							"path": [
+								"api",
+								"restricciones",
+								"3"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}

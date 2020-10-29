@@ -38,7 +38,8 @@ class Kernel extends ConsoleKernel
         \Illuminate\Routing\Middleware\ThrottleRequests::class,
         \Illuminate\Session\Middleware\AuthenticateSession::class,
         \Illuminate\Routing\Middleware\SubstituteBindings::class,
-        \Illuminate\Auth\Middleware\Authorize::class
+        \Illuminate\Auth\Middleware\Authorize::class,
+	\App\Http\Middleware\Cors::class,//cors added here
     ];
 
     /**

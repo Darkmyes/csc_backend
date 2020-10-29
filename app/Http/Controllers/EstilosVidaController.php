@@ -15,7 +15,7 @@ class EstilosVidaController extends Controller
      */
     public function index()
     {
-        return response()->json(['status'=>'ok','data'=>estilos_vida::all()], 200);
+        return response()->json([ "data" => estilos_vida::all()], 200);
     }
 
     /**
@@ -43,45 +43,45 @@ class EstilosVidaController extends Controller
             return response()->json(['error'=>$validator->errors()], 401);            
         }
 
-        $estilo_vida = new estilos_vida([      
+        $estilos_vidas = new estilos_vida([      
             'nombre'  => $request->nombre
         ]);
 
-        $estilo_vida->save();
+        $estilos_vidas->save();
         return response()->json([
             'message' => 'Estilo de Vida Registrada'], 200);
     }
 
     public function show($id)
     {
-        $estilo_vida = estilos_vida::find($id);
-        if (!$estilo_vida) {
+        $estilos_vidas = estilos_vida::find($id);
+        if (!$estilos_vidas) {
 			return response()->json([
                 'message'=>'No se encuentra un Estilo de Vida con ese código.'],404);
 		}
-		return response()->json(['status'=>'ok','data'=>$estilo_vida],200);
+		return response()->json([ "data" => $estilos_vidas],200);
     }
 
     public function porNombre($busq)
     {
-        $estilo_vida = estilos_vida::where('nombre', 'like', '%'.$busq.'%')->get();
-        if (!$estilo_vida) {
+        $estilos_vidas = estilos_vida::where('nombre', 'like', '%'.$busq.'%')->get();
+        if (!$estilos_vidas) {
 			return response()->json([
                 'message'=>'No se encuentra un Estilo de Vida con ese código.'],404);
 		}
-		return response()->json(['status'=>'ok','data'=>$estilo_vida],200);
+		return response()->json([ "data" => $estilos_vidas],200);
     }
 
-    public function edit(estilo_vida $estilo_vida)
+    public function edit(estilos_vidas $estilos_vidas)
     {
         //
     }
 
     public function update(Request $request, $id)
     {
-        $estilo_vida = estilos_vida::find($id);
+        $estilos_vidas = estilos_vida::find($id);
 
-        if (!$estilo_vida) {
+        if (!$estilos_vidas) {
 			return response()->json([
                 'message' => 'No se encuentra un Estilo de Vida con ese código.'
             ],404);
@@ -94,8 +94,8 @@ class EstilosVidaController extends Controller
             return response()->json(['error'=>$validator->errors()], 401);            
         }
         
-        $estilo_vida->nombre = $request->nombre;
-        $estilo_vida->save();
+        $estilos_vidas->nombre = $request->nombre;
+        $estilos_vidas->save();
 
         return response()->json([
             'message' => 'Se actualizó el Estilo de Vida'], 200);
@@ -103,13 +103,13 @@ class EstilosVidaController extends Controller
 
     public function destroy($id)
     {
-        $estilo_vida = estilos_vida::find($id);
-        if (!$estilo_vida) {
+        $estilos_vidas = estilos_vida::find($id);
+        if (!$estilos_vidas) {
 			return response()->json([
                 'message' => 'No se encuentra un Estilo de Vida con ese código.'
             ], 404);
 		}
-        $estilo_vida->delete();
+        $estilos_vidas->delete();
         return response()->json([
             'message' => 'Estilo de Vida Eliminado'], 200);
     }

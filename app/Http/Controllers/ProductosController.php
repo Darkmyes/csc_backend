@@ -15,7 +15,7 @@ class ProductosController extends Controller
      */
     public function index()
     {
-        return response()->json(['status'=>'ok','data'=>productos::all()], 200);
+        return response()->json([ "data" => productos::all()], 200);
     }
 
     /**
@@ -61,7 +61,7 @@ class ProductosController extends Controller
 			return response()->json([
                 'code'=>200,'message'=>'No se encuentra un producto con ese código.'],200);
 		}
-		return response()->json(['status'=>'ok','data'=>producto],200);
+		return response()->json([ "data" => $producto],200);
     }
 
     /**

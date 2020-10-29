@@ -18,7 +18,7 @@ class MenuDiarioController extends Controller
         $lista_producto = menu_diario::join('productos', 'productos.id', '=', 'menu_diarios.id_producto')
             ->select('menu_diarios.*', 'productos.nombre')
             ->get();
-        return response()->json(['status'=>'ok','data'=>$lista_producto], 200);
+        return response()->json([ "data" => $lista_producto], 200);
     }
 
     /**
@@ -75,7 +75,7 @@ class MenuDiarioController extends Controller
 			return response()->json([
                 'message'=>'No se encuentra una menu_diario con ese código.'],404);
 		}
-		return response()->json(['status'=>'ok','data'=>$menu_diario],200);
+		return response()->json([ "data" => $menu_diario],200);
     }
 
     public function update(Request $request, $id_menu) {
@@ -113,7 +113,7 @@ class MenuDiarioController extends Controller
 			return response()->json([
                 'message'=>'No se encuentra un Producto del Menu Diario con ese código.'],404);
 		}
-		return response()->json(['status'=>'ok','data'=>$menu_diario],200);
+		return response()->json([ "data" => $menu_diario],200);
     }
 
     public function porBarFecha($id_bar,$fecha)
@@ -129,7 +129,7 @@ class MenuDiarioController extends Controller
 			return response()->json([
                 'message'=>'No se encuentra un Producto del Menu Diario con ese código.'],404);
 		}
-		return response()->json(['status'=>'ok','data'=>$menu_diario],200);
+		return response()->json([ "data" => $menu_diario],200);
     }
 
     public function porFecha($fecha)
@@ -145,7 +145,7 @@ class MenuDiarioController extends Controller
 			return response()->json([
                 'message'=>'No se encuentra un Producto del Menu Diario con ese código.'],404);
 		}
-		return response()->json(['status'=>'ok','data'=>$menu_diario],200);
+		return response()->json([ "data" => $menu_diario],200);
     }
 
     public function destroy($id_menu)

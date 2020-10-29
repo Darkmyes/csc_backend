@@ -59,19 +59,19 @@ class RestriccionesController extends Controller
             ])
             ->get();
         // ESTILO DE VIDA
-        $r_estilos = restricciones::join('estilos_vida', 'estilos_vida.id', '=', 'restricciones.id_causante')
+        $r_estilos = restricciones::join('estilos_vidas', 'estilos_vidas.id', '=', 'restricciones.id_causante')
             ->join('componentes', 'componentes.id', '=', 'restricciones.id_restriccion')
-            ->select('restricciones.*', 'estilos_vida.nombre as causante', 'componentes.nombre as restriccion')
+            ->select('restricciones.*', 'estilos_vidas.nombre as causante', 'componentes.nombre as restriccion')
             ->where([
-                ['restricciones.por','=',"enfermedad"],
+                ['restricciones.por','=',"estilo_vida"],
                 ['restricciones.de','=',"componente"]
             ])
             ->get();
-        $r_estilos2 = restricciones::join('estilos_vida', 'estilos_vida.id', '=', 'restricciones.id_causante')
+        $r_estilos2 = restricciones::join('estilos_vidas', 'estilos_vidas.id', '=', 'restricciones.id_causante')
         ->join('categoria_alimentos', 'categoria_alimentos.id', '=', 'restricciones.id_restriccion')
-            ->select('restricciones.*', 'estilos_vida.nombre as causante', 'categoria_alimentos.nombre as restriccion')
+            ->select('restricciones.*', 'estilos_vidas.nombre as causante', 'categoria_alimentos.nombre as restriccion')
             ->where([
-                ['restricciones.por','=',"enfermedad"],
+                ['restricciones.por','=',"estilo_vida"],
                 ['restricciones.de','=',"categoria_alimento"]
             ])
             ->get();
@@ -122,7 +122,7 @@ class RestriccionesController extends Controller
         }
 
         if($request->por == 'estilo_vida') {
-            $estilo_vida = DB::table('estilos_vida')->find($request->id_causante);
+            $estilo_vida = DB::table('estilos_vidas')->find($request->id_causante);
             if(!$estilo_vida) {
                 $error = true;
                 array_push($errores, 'No existe el estilo de vida especificada');
@@ -162,20 +162,15 @@ class RestriccionesController extends Controller
             'message' => 'Restriccion Registrada'], 200);
     }
 
-    public function show($id_bar, $id_producto)
+    public function show($id)
     {
-        $restricciones = restricciones::where([
-                ['id_producto', '=', $id_producto],
-                ['id_bar', '=', $id_bar],
-            ])->join('productos', 'productos.id', '=', 'restricciones.id_producto')            
-            ->select('restricciones.*', 'productos.nombre')
-            ->get();
+        $restricciones = restricciones::find($id);
 
         if (!$restricciones) {
 			return response()->json([
                 'message'=>'No se encuentra una restricciones con ese código.'],404);
 		}
-		return response()->json(['status'=>'ok','data'=>$restricciones],200);
+		return response()->json([$restricciones],200);
     }
 
     public function update(Request $request, $id) {
@@ -196,13 +191,13 @@ class RestriccionesController extends Controller
 
     public function porCausante($causante)
     {
-        $validator = Validator::make($request->all(), [
-            'id_causante' => 'required',
-            'id_restriccion' => 'required',
-            'tipo' => 'required|in:parcial,completa',
-            'por' => 'required|in:alergia,enfermedad,estilo_vida',
-            'de' => 'required|in:componente,categoria_alimento'
+        $validator = Validator::make(["causante" => $causante], [
+            'causante' => 'in:alergia,enfermedad,estilo_vida'
         ]);
+        if ($validator->fails()) { 
+            return response()->json(['error'=>$validator->errors()], 401);            
+        }
+
         $r_total = [];
         if($causante == "alergia") {
             $r_alergias = restricciones::join('alergias', 'alergias.id', '=', 'restricciones.id_causante')
@@ -241,19 +236,19 @@ class RestriccionesController extends Controller
                 ->get();
             $r_total = $r_enfermedades->merge($r_enfermedades2);
         } else if($causante == "estilo_vida") {
-            $r_estilos = restricciones::join('estilos_vida', 'estilos_vida.id', '=', 'restricciones.id_causante')
+            $r_estilos = restricciones::join('estilos_vidas', 'estilos_vidas.id', '=', 'restricciones.id_causante')
                 ->join('componentes', 'componentes.id', '=', 'restricciones.id_restriccion')
-                ->select('restricciones.*', 'estilos_vida.nombre as causante', 'componentes.nombre as restriccion')
+                ->select('restricciones.*', 'estilos_vidas.nombre as causante', 'componentes.nombre as restriccion')
                 ->where([
-                    ['restricciones.por','=',"enfermedad"],
+                    ['restricciones.por','=',"estilo_vida"],
                     ['restricciones.de','=',"componente"]
                 ])
                 ->get();
-            $r_estilos2 = restricciones::join('estilos_vida', 'estilos_vida.id', '=', 'restricciones.id_causante')
+            $r_estilos2 = restricciones::join('estilos_vidas', 'estilos_vidas.id', '=', 'restricciones.id_causante')
                 ->join('categoria_alimentos', 'categoria_alimentos.id', '=', 'restricciones.id_restriccion')
-                ->select('restricciones.*', 'estilos_vida.nombre as causante', 'categoria_alimentos.nombre as restriccion')
+                ->select('restricciones.*', 'estilos_vidas.nombre as causante', 'categoria_alimentos.nombre as restriccion')
                 ->where([
-                    ['restricciones.por','=',"enfermedad"],
+                    ['restricciones.por','=',"estilo_vida"],
                     ['restricciones.de','=',"categoria_alimento"]
                 ])
                 ->get();
@@ -262,36 +257,220 @@ class RestriccionesController extends Controller
         return response()->json(['status' => 'ok','data' => $r_total], 200);
     }
 
-    public function porBarFecha($id_bar,$fecha)
+    public function porRestriccion($restriccion)
     {
-        $restricciones = restricciones::where([
-                ['id_bar', '=', $id_bar],
-                ['fecha', '=', $fecha]
-            ])
-            ->join('productos', 'productos.id', '=', 'restricciones.id_producto')
-            ->select('restricciones.*', 'productos.nombre')
-            ->get();
-        if (!$restricciones) {
-			return response()->json([
-                'message'=>'No se encuentra un Restriccion con ese código.'],404);
-		}
-		return response()->json(['status'=>'ok','data'=>$restricciones],200);
+        $validator = Validator::make(["restriccion" => $restriccion], [
+            'restriccion' => 'in:componente,categoria_alimento'
+        ]);
+        if ($validator->fails()) { 
+            return response()->json(['error'=>$validator->errors()], 401);            
+        }
+
+        $r_total = [];
+        if($restriccion == "componente") {
+            $r_alergias = restricciones::join('alergias', 'alergias.id', '=', 'restricciones.id_causante')
+                ->join('componentes', 'componentes.id', '=', 'restricciones.id_restriccion')
+                ->select('restricciones.*', 'alergias.nombre as causante', 'componentes.nombre as restriccion')
+                ->where([
+                    ['restricciones.por','=',"alergia"],
+                    ['restricciones.de','=',"componente"]
+                ])
+                ->get();
+            $r_enfermedades = restricciones::join('enfermedades', 'enfermedades.id', '=', 'restricciones.id_causante')
+                ->join('componentes', 'componentes.id', '=', 'restricciones.id_restriccion')
+                ->select('restricciones.*', 'enfermedades.nombre as causante', 'componentes.nombre as restriccion')
+                ->where([
+                    ['restricciones.por','=',"enfermedad"],
+                    ['restricciones.de','=',"componente"]
+                ])
+                ->get();
+            $r_estilos = restricciones::join('estilos_vidas', 'estilos_vidas.id', '=', 'restricciones.id_causante')
+                ->join('componentes', 'componentes.id', '=', 'restricciones.id_restriccion')
+                ->select('restricciones.*', 'estilos_vidas.nombre as causante', 'componentes.nombre as restriccion')
+                ->where([
+                    ['restricciones.por','=',"estilo_vida"],
+                    ['restricciones.de','=',"componente"]
+                ])
+                ->get();
+            $r_total = $r_alergias->merge($r_enfermedades);
+            $r_total = $r_total->merge($r_estilos);
+        } else if($restriccion == "categoria_alimento") {            
+            $r_alergias2 = restricciones::join('alergias', 'alergias.id', '=', 'restricciones.id_causante')
+                ->join('categoria_alimentos', 'categoria_alimentos.id', '=', 'restricciones.id_restriccion')
+                ->select('restricciones.*', 'alergias.nombre as causante', 'categoria_alimentos.nombre as restriccion')
+                ->where([
+                    ['restricciones.por','=',"alergia"],
+                    ['restricciones.de','=',"categoria_alimento"]
+                ])
+                ->get();
+            $r_enfermedades2 = restricciones::join('enfermedades', 'enfermedades.id', '=', 'restricciones.id_causante')
+                ->join('categoria_alimentos', 'categoria_alimentos.id', '=', 'restricciones.id_restriccion')
+                ->select('restricciones.*', 'enfermedades.nombre as causante', 'categoria_alimentos.nombre as restriccion')
+                ->where([
+                    ['restricciones.por','=',"enfermedad"],
+                    ['restricciones.de','=',"categoria_alimento"]
+                ])
+                ->get();
+            $r_estilos2 = restricciones::join('estilos_vidas', 'estilos_vidas.id', '=', 'restricciones.id_causante')
+                ->join('categoria_alimentos', 'categoria_alimentos.id', '=', 'restricciones.id_restriccion')
+                ->select('restricciones.*', 'estilos_vidas.nombre as causante', 'categoria_alimentos.nombre as restriccion')
+                ->where([
+                    ['restricciones.por','=',"estilo_vida"],
+                    ['restricciones.de','=',"categoria_alimento"]
+                ])
+                ->get();
+            $r_total = $r_alergias2->merge($r_enfermedades2);
+            $r_total = $r_total->merge($r_estilos2);
+        }
+        return response()->json(['status' => 'ok','data' => $r_total], 200);
     }
 
-    public function porFecha($fecha)
+    public function porCausanteNombre($causante, $nombre)
     {
-        $restricciones = restricciones::where([
-                ['fecha', '=', $fecha]
-            ])
-            ->join('productos', 'productos.id', '=', 'restricciones.id_producto')
-            ->orderBy('id_bar')
-            ->select('restricciones.*', 'productos.nombre')
-            ->get();
-        if (!$restricciones) {
-			return response()->json([
-                'message'=>'No se encuentra un Restriccion con ese código.'],404);
-		}
-		return response()->json(['status'=>'ok','data'=>$restricciones],200);
+        $validator = Validator::make(["causante" => $causante], [
+            'causante' => 'in:alergia,enfermedad,estilo_vida'
+        ]);
+        if ($validator->fails()) { 
+            return response()->json(['error'=>$validator->errors()], 401);            
+        }
+
+        $r_total = [];
+        if($causante == "alergia") {
+            $r_alergias = restricciones::join('alergias', 'alergias.id', '=', 'restricciones.id_causante')
+                ->join('componentes', 'componentes.id', '=', 'restricciones.id_restriccion')
+                ->select('restricciones.*', 'alergias.nombre as causante', 'componentes.nombre as restriccion')
+                ->where([
+                    ['restricciones.por','=',"alergia"],
+                    ['restricciones.de','=',"componente"],
+                    ['alergias.nombre','like','%'.$nombre.'%']
+                ])
+                ->get();
+            $r_alergias2 = restricciones::join('alergias', 'alergias.id', '=', 'restricciones.id_causante')
+                ->join('categoria_alimentos', 'categoria_alimentos.id', '=', 'restricciones.id_restriccion')
+                ->select('restricciones.*', 'alergias.nombre as causante', 'categoria_alimentos.nombre as restriccion')
+                ->where([
+                    ['restricciones.por','=',"alergia"],
+                    ['restricciones.de','=',"categoria_alimento"],
+                    ['alergias.nombre','like','%'.$nombre.'%']
+                ])
+                ->get();
+            $r_total = $r_alergias->merge($r_alergias2);
+        } else if($causante == "enfermedad") {
+            $r_enfermedades = restricciones::join('enfermedades', 'enfermedades.id', '=', 'restricciones.id_causante')
+                ->join('componentes', 'componentes.id', '=', 'restricciones.id_restriccion')
+                ->select('restricciones.*', 'enfermedades.nombre as causante', 'componentes.nombre as restriccion')
+                ->where([
+                    ['restricciones.por','=',"enfermedad"],
+                    ['restricciones.de','=',"componente"],
+                    ['enfermedades.nombre','like','%'.$nombre.'%']
+                ])
+                ->get();
+            $r_enfermedades2 = restricciones::join('enfermedades', 'enfermedades.id', '=', 'restricciones.id_causante')
+                ->join('categoria_alimentos', 'categoria_alimentos.id', '=', 'restricciones.id_restriccion')
+                ->select('restricciones.*', 'enfermedades.nombre as causante', 'categoria_alimentos.nombre as restriccion')
+                ->where([
+                    ['restricciones.por','=',"enfermedad"],
+                    ['restricciones.de','=',"categoria_alimento"],
+                    ['enfermedades.nombre','like','%'.$nombre.'%']
+                ])
+                ->get();
+            $r_total = $r_enfermedades->merge($r_enfermedades2);
+        } else if($causante == "estilo_vida") {
+            $r_estilos = restricciones::join('estilos_vidas', 'estilos_vidas.id', '=', 'restricciones.id_causante')
+                ->join('componentes', 'componentes.id', '=', 'restricciones.id_restriccion')
+                ->select('restricciones.*', 'estilos_vidas.nombre as causante', 'componentes.nombre as restriccion')
+                ->where([
+                    ['restricciones.por','=',"estilo_vida"],
+                    ['restricciones.de','=',"componente"],
+                    ['estilos_vidas.nombre','like','%'.$nombre.'%']
+                ])
+                ->get();
+            $r_estilos2 = restricciones::join('estilos_vidas', 'estilos_vidas.id', '=', 'restricciones.id_causante')
+                ->join('categoria_alimentos', 'categoria_alimentos.id', '=', 'restricciones.id_restriccion')
+                ->select('restricciones.*', 'estilos_vidas.nombre as causante', 'categoria_alimentos.nombre as restriccion')
+                ->where([
+                    ['restricciones.por','=',"estilo_vida"],
+                    ['restricciones.de','=',"categoria_alimento"],
+                    ['estilos_vidas.nombre','like','%'.$nombre.'%']
+                ])
+                ->get();
+            $r_total = $r_estilos->merge($r_estilos2);
+        }
+        return response()->json(['status' => 'ok','data' => $r_total], 200);
+    }
+
+    public function porRestriccionNombre($restriccion, $nombre)
+    {
+        $validator = Validator::make(["restriccion" => $restriccion], [
+            'restriccion' => 'in:componente,categoria_alimento'
+        ]);
+        if ($validator->fails()) { 
+            return response()->json(['error'=>$validator->errors()], 401);            
+        }
+
+        $r_total = [];
+        if($restriccion == "componente") {
+            $r_alergias = restricciones::join('alergias', 'alergias.id', '=', 'restricciones.id_causante')
+                ->join('componentes', 'componentes.id', '=', 'restricciones.id_restriccion')
+                ->select('restricciones.*', 'alergias.nombre as causante', 'componentes.nombre as restriccion')
+                ->where([
+                    ['restricciones.por','=',"alergia"],
+                    ['restricciones.de','=',"componente"],
+                    ['componentes.nombre','like','%'.$nombre.'%']
+                ])
+                ->get();
+            $r_enfermedades = restricciones::join('enfermedades', 'enfermedades.id', '=', 'restricciones.id_causante')
+                ->join('componentes', 'componentes.id', '=', 'restricciones.id_restriccion')
+                ->select('restricciones.*', 'enfermedades.nombre as causante', 'componentes.nombre as restriccion')
+                ->where([
+                    ['restricciones.por','=',"enfermedad"],
+                    ['restricciones.de','=',"componente"],
+                    ['componentes.nombre','like','%'.$nombre.'%']
+                ])
+                ->get();
+            $r_estilos = restricciones::join('estilos_vidas', 'estilos_vidas.id', '=', 'restricciones.id_causante')
+                ->join('componentes', 'componentes.id', '=', 'restricciones.id_restriccion')
+                ->select('restricciones.*', 'estilos_vidas.nombre as causante', 'componentes.nombre as restriccion')
+                ->where([
+                    ['restricciones.por','=',"estilo_vida"],
+                    ['restricciones.de','=',"componente"],
+                    ['componentes.nombre','like','%'.$nombre.'%']
+                ])
+                ->get();
+            $r_total = $r_alergias->merge($r_enfermedades);
+            $r_total = $r_total->merge($r_estilos);
+        } else if($restriccion == "categoria_alimento") {            
+            $r_alergias2 = restricciones::join('alergias', 'alergias.id', '=', 'restricciones.id_causante')
+                ->join('categoria_alimentos', 'categoria_alimentos.id', '=', 'restricciones.id_restriccion')
+                ->select('restricciones.*', 'alergias.nombre as causante', 'categoria_alimentos.nombre as restriccion')
+                ->where([
+                    ['restricciones.por','=',"alergia"],
+                    ['restricciones.de','=',"categoria_alimento"],
+                    ['categoria_alimentos.nombre','like','%'.$nombre.'%']
+                ])
+                ->get();
+            $r_enfermedades2 = restricciones::join('enfermedades', 'enfermedades.id', '=', 'restricciones.id_causante')
+                ->join('categoria_alimentos', 'categoria_alimentos.id', '=', 'restricciones.id_restriccion')
+                ->select('restricciones.*', 'enfermedades.nombre as causante', 'categoria_alimentos.nombre as restriccion')
+                ->where([
+                    ['restricciones.por','=',"enfermedad"],
+                    ['restricciones.de','=',"categoria_alimento"],
+                    ['categoria_alimentos.nombre','like','%'.$nombre.'%']
+                ])
+                ->get();
+            $r_estilos2 = restricciones::join('estilos_vidas', 'estilos_vidas.id', '=', 'restricciones.id_causante')
+                ->join('categoria_alimentos', 'categoria_alimentos.id', '=', 'restricciones.id_restriccion')
+                ->select('restricciones.*', 'estilos_vidas.nombre as causante', 'categoria_alimentos.nombre as restriccion')
+                ->where([
+                    ['restricciones.por','=',"estilo_vida"],
+                    ['restricciones.de','=',"categoria_alimento"],
+                    ['categoria_alimentos.nombre','like','%'.$nombre.'%']
+                ])
+                ->get();
+            $r_total = $r_alergias2->merge($r_enfermedades2);
+            $r_total = $r_total->merge($r_estilos2);
+        }
+        return response()->json(['status' => 'ok','data' => $r_total], 200);
     }
 
     public function destroy($id)

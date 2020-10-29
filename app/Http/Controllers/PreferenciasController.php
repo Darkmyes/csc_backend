@@ -18,25 +18,9 @@ class PreferenciasController extends Controller
         $preferencias = preferencias::join('categoria_alimentos', 'categoria_alimentos.id', '=', 'preferencias.id_categoria_alimento')
             ->select('preferencias.*', 'categoria_alimentos.nombre')
             ->get();
-        return response()->json(['status'=>'ok','data'=>$preferencias], 200);
+        return response()->json([ "data" => $preferencias], 200);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
@@ -82,7 +66,7 @@ class PreferenciasController extends Controller
 			return response()->json([
                 'message'=>'No se encuentra una preferencia con ese código.'],404);
 		}
-		return response()->json(['status'=>'ok','data'=>$preferencia],200);
+		return response()->json([ "data" => $preferencia],200);
     }
 
     public function porUsuario($id_usuario)
@@ -95,7 +79,7 @@ class PreferenciasController extends Controller
 			return response()->json([
                 'message'=>'No se encuentra una preferencia con ese código.'],404);
 		}
-		return response()->json(['status'=>'ok','data'=>$preferencia],200);
+		return response()->json([ "data" => $preferencia],200);
     }
 
     public function edit(preferencias $preferencias)

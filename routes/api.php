@@ -5,6 +5,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::post('login', 'API\UserController@login');
 Route::post('register', 'API\UserController@register');
+
+//Route::get('validar_email/{id}/{hash}', 'Auth\VerificationController@verify')->name('verification.verify');
+
 //Route::post('refreshtoken', 'API\UserController@refreshToken');
 
 /* Route::get('email/resend', 'Auth\VerificationController@resend')->name('verification.resend');
@@ -14,6 +17,7 @@ Route::get('email/verify/{id}/{hash}', 'Auth\VerificationController@verify')->na
 Route::group(['middleware' => ['CheckClientCredentials','auth:api']], function() {
     Route::post('logout', 'API\UserController@logout');
     Route::post('details', 'API\UserController@details');
+    Route::post('usuario/cambiar_pass', 'API\UserController@cambiarPass');
 });
 // TIPOS DE USUARIO
 Route::resource('tipo_usuario','TipoUsuarioController',  ['only' => [
@@ -91,8 +95,9 @@ Route::get('estilos_vida_usuario/usuario/{id_usuario}','EstilosVidaUsuarioContro
 
 // BAR
 Route::resource('bares','BarController',  ['only' => [
-    'index','show','store','update','destroy'
+    'index','show','store','destroy'
 ]]);
+Route::post('bares/update/{id}','BarController@update');
 Route::get('bares/nombre/{busq}','BarController@porNombre');
 Route::get('bares/usuario/{id_usuario}','BarController@porUsuario');
 
@@ -116,6 +121,7 @@ Route::resource('lista_productos','ListaProductosController',  ['only' => [
     'index','store'
 ]]);
 Route::put('lista_productos','ListaProductosController@update');
+Route::delete('lista_productos/bar/{id_bar}/producto/{id_producto}','ListaProductosController@destroy');
 Route::delete('lista_productos/bar/{id_bar}/producto/{id_producto}','ListaProductosController@destroy');
 Route::get('lista_productos/bar/{id_bar}/producto/{id_producto}','ListaProductosController@show');
 Route::get('lista_productos/bar/{id_bar}','ListaProductosController@porBar');
@@ -156,5 +162,9 @@ Route::get('componentes_producto/componente/{id_componente}/nombre/{nombre}','Pr
 
 // RESTRICCIONES
 Route::resource('restricciones','RestriccionesController',  ['only' => [
-    'index','store','show','update','delete'
+    'index','store','show','update','destroy'
 ]]);
+Route::get('restricciones/causante/{causante}','RestriccionesController@porCausante');
+Route::get('restricciones/restriccion/{restriccion}','RestriccionesController@porRestriccion');
+Route::get('restricciones/causante/{causante}/nombre/{nombre}','RestriccionesController@porCausanteNombre');
+Route::get('restricciones/restriccion/{restriccion}/nombre/{nombre}','RestriccionesController@porRestriccionNombre');

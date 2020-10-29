@@ -15,7 +15,7 @@ class EnfermedadesController extends Controller
      */
     public function index()
     {
-        return response()->json(['status'=>'ok','data'=>enfermedades::all()], 200);
+        return response()->json(["data" => enfermedades::all()], 200);
     }
 
     /**
@@ -59,7 +59,7 @@ class EnfermedadesController extends Controller
 			return response()->json([
                 'message'=>'No se encuentra una enfermedad con ese código.'],404);
 		}
-		return response()->json(['status'=>'ok','data'=>$enfermedad],200);
+		return response()->json(["data" => $enfermedad],200);
     }
 
     public function porNombre($busq)
@@ -69,7 +69,7 @@ class EnfermedadesController extends Controller
 			return response()->json([
                 'message'=>'No se encuentra una enfermedad con ese código.'],404);
 		}
-		return response()->json(['status'=>'ok','data'=>$enfermedad],200);
+		return response()->json(["data" => $enfermedad],200);
     }
 
     public function edit(enfermedad $enfermedad)

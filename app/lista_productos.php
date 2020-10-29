@@ -9,6 +9,7 @@ class lista_productos extends Model
     protected $fillable = [
         'id_bar',
         'id_producto',
-        'precio'
+        'precio',
+	'img'
     ];
 }

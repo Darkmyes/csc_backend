@@ -15,7 +15,7 @@ class ComponenteController extends Controller
      */
     public function index()
     {
-        return response()->json(['status'=>'ok','data'=>componente::all()], 200);
+        return response()->json(["data"=>componente::all()], 200);
     }
 
     /**
@@ -49,7 +49,7 @@ class ComponenteController extends Controller
 			return response()->json([
                 'message'=>'No se encuentra una componente con ese código.'],404);
 		}
-		return response()->json(['status'=>'ok','data'=>$componente],200);
+		return response()->json(["data" => $componente],200);
     }
 
     public function porNombre($busq)
@@ -59,7 +59,7 @@ class ComponenteController extends Controller
 			return response()->json([
                 'message'=>'No se encuentra una componente con ese código.'],404);
 		}
-		return response()->json(['status'=>'ok','data'=>$componente],200);
+		return response()->json(["data"=>$componente],200);
     }
 
     public function update(Request $request, $id)

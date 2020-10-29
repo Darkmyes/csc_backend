@@ -15,7 +15,7 @@ class NegocioCategoriaController extends Controller
      */
     public function index()
     {
-        return response()->json(['status'=>'ok','data'=>negocio_categoria::all()], 200);
+        return response()->json([negocio_categoria::all()], 200);
     }
 
     /**
@@ -64,7 +64,7 @@ class NegocioCategoriaController extends Controller
 			return response()->json(['errors'=>array(['code'=>404,'message'=>'No se encuentra un negocio con ese código.'])],404);
 		}
 
-		return response()->json(['status'=>'ok','data'=>$negocio],200);
+		return response()->json([$negocio],200);
     }
 
     /**

@@ -18,6 +18,7 @@ class CreateListaProductosTable extends Migration
             $table->bigInteger('id_producto')->constrained('producto')->onUpdate('cascade')->onDelete('restrict');
             $table->bigInteger('id_bar')->constrained('bar')->onUpdate('cascade')->onDelete('restrict');
             $table->double('precio');
+	    $table->string('img', 200)->nullable();
             $table->timestamps();
         });
     }

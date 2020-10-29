@@ -15,8 +15,8 @@ class NegociosController extends Controller
      */
     public function index()
     {
-        //return response()->json(['status'=>'ok','data'=>DB::table('lista_negocios')->get()], 200);
-        return response()->json(['status'=>'ok','data'=>negocios::all()], 200);
+        //return response()->json([DB::table('lista_negocios')->get()], 200);
+        return response()->json([negocios::all()], 200);
         //return response()->json(negocios::all(), 200);
     }
 
@@ -88,7 +88,7 @@ class NegociosController extends Controller
 			return response()->json([
                 'code'=>200,'message'=>'No se encuentra un negocio con ese código.'],200);
 		}
-		return response()->json(['status'=>'ok','data'=>$negocio],200);
+		return response()->json([$negocio],200);
     }
 
     public function buscar($busq)
@@ -99,7 +99,7 @@ class NegociosController extends Controller
         ->orWhere('ciudad', 'like', '%'.$busq.'%')
         ->orWhere('pais', 'like', '%'.$busq.'%')
         ->skip(0)->take(5)->get();
-		return response()->json(['status'=>'ok','data'=>$negocios],200);
+		return response()->json([$negocios],200);
     }
     /**
      * Show the form for editing the specified resource.

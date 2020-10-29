@@ -17,10 +17,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-/* Auth::routes(['verify' => true]);
-
+Auth::routes(['verify' => true]);
+/*
 Route::get('profile', function () {
 })->middleware('verified'); */
-Auth::routes();
+//Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

@@ -15,7 +15,7 @@ class ActividadesCuarentenaController extends Controller
      */
     public function index()
     {
-        return response()->json(['status'=>'ok','data'=>actividades_cuarentena::all()], 200);
+        return response()->json([actividades_cuarentena::all()], 200);
     }
 
     /**
@@ -67,7 +67,7 @@ class ActividadesCuarentenaController extends Controller
 			return response()->json([
                 'code'=>200,'message'=>'No se encuentra una actividad_cuarentena con ese código.'],200);
 		}
-		return response()->json(['status'=>'ok','data'=>actividad_cuarentena],200); */
+		return response()->json([actividad_cuarentena],200); */
     }
 
     public function byUsuario($id)

@@ -15,7 +15,7 @@ class ValoracionesController extends Controller
      */
     public function index()
     {
-        return response()->json(['status'=>'ok','data'=>valoraciones::all()], 200);
+        return response()->json([valoraciones::all()], 200);
     }
 
     /**
@@ -62,7 +62,7 @@ class ValoracionesController extends Controller
 			return response()->json([
                 'code'=>200,'message'=>'No se encuentra una valoracion con ese código.'],200);
 		}
-		return response()->json(['status'=>'ok','data'=>$valoracion],200);
+		return response()->json([$valoracion],200);
     }
 
     /**

@@ -15,7 +15,7 @@ class CategoriaAlimentoController extends Controller
      */
     public function index()
     {
-        return response()->json(['status'=>'ok','data'=>categoria_alimento::all()], 200);
+        return response()->json([ "data" => categoria_alimento::all()], 200);
     }
 
     /**
@@ -59,7 +59,7 @@ class CategoriaAlimentoController extends Controller
 			return response()->json([
                 'message'=>'No se encuentra una Categoría de Alimento con ese código.'],404);
 		}
-		return response()->json(['status'=>'ok','data'=>$categoria_alimento],200);
+		return response()->json([ "data" => $categoria_alimento],200);
     }
 
     public function porNombre($busq)
@@ -69,7 +69,7 @@ class CategoriaAlimentoController extends Controller
 			return response()->json([
                 'message'=>'No se encuentra una Categoría de Alimento con ese código.'],404);
 		}
-		return response()->json(['status'=>'ok','data'=>$categoria_alimento],200);
+		return response()->json([ "data" => $categoria_alimento],200);
     }
 
     public function edit(categoria_alimento $categoria_alimento)

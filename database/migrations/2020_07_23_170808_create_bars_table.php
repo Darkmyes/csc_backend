@@ -19,6 +19,7 @@ class CreateBarsTable extends Migration
             $table->bigInteger('id_usuario')->constrained('users')->onUpdate('cascade')->onDelete('restrict');
             $table->string('nombre',100);
             $table->string('celular',10);
+	    $table->string('img',200)->nullable();
             $table->timestamps();
         });
     }

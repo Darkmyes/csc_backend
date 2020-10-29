@@ -18,7 +18,7 @@ class EnfermedadesUsuarioController extends Controller
         $EnfermedadesUsuario = EnfermedadesUsuario::join('enfermedades', 'enfermedades.id', '=', 'enfermedades_usuarios.id_enfermedad')
             ->select('enfermedades_usuarios.*', 'enfermedades.nombre')
             ->get();
-        return response()->json(['status' => 'ok','data' => $EnfermedadesUsuario], 200);
+        return response()->json([ "data" => $EnfermedadesUsuario], 200);
     }
 
     /**
@@ -70,7 +70,7 @@ class EnfermedadesUsuarioController extends Controller
 			return response()->json([
                 'message'=>'No se encuentra una enfermedad del Usuario con ese código.'],404);
 		}
-		return response()->json(['status'=>'ok','data'=>$enfermedad_usuario],200);
+		return response()->json([ "data" =>$enfermedad_usuario],200);
     }
 
     public function porUsuario($id_usuario)
@@ -83,7 +83,7 @@ class EnfermedadesUsuarioController extends Controller
 			return response()->json([
                 'message'=>'No se encuentra una enfermedad del Usuario con ese código.'],404);
 		}
-		return response()->json(['status'=>'ok','data'=>$enfermedad_usuario],200);
+		return response()->json([ "data" =>$enfermedad_usuario],200);
     }
 
     public function destroy($id_usuario, $id_cat_al)

@@ -15,7 +15,7 @@ class CalificacionController extends Controller
      */
     public function index()
     {
-        return response()->json(['status'=>'ok','data'=>calificacion::all()], 200);
+        return response()->json([calificacion::all()], 200);
     }
 
     /**
@@ -68,7 +68,7 @@ class CalificacionController extends Controller
 			return response()->json([
                 'message'=>'No se encuentra una Calificacion con ese código.'],404);
 		}
-		return response()->json(['status'=>'ok','data'=>$calificacion],200);
+		return response()->json([$calificacion],200);
     }
 
     public function update(Request $request) {
@@ -110,7 +110,7 @@ class CalificacionController extends Controller
 			return response()->json([
                 'message'=>'No se encuentra una Calificacion con ese código.'],404);
 		}
-		return response()->json(['status'=>'ok','data'=>$calificacion],200);
+		return response()->json([$calificacion],200);
     }
 
     public function destroy($id_bar, $id_usuario)

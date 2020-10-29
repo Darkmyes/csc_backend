@@ -19,7 +19,7 @@ class ProductoCategoriaController extends Controller
             ->join('categoria_alimentos', 'categoria_alimentos.id', '=', 'producto_categorias.id_categoria')
             ->select('producto_categorias.*', 'productos.nombre as producto', 'categoria_alimentos.nombre as categoria')
             ->get();
-        return response()->json(['status'=>'ok','data'=>$lista_producto], 200);
+        return response()->json(['data' => $lista_producto], 200);
     }
 
     /**
@@ -73,7 +73,7 @@ class ProductoCategoriaController extends Controller
 			return response()->json([
                 'message'=>'No se encuentra una producto_categoria con ese código.'],404);
 		}
-		return response()->json(['status'=>'ok','data'=>$producto_categoria],200);
+		return response()->json(['data' => $producto_categoria],200);
     }
 
     public function update(Request $request, $id_menu) {
@@ -110,7 +110,7 @@ class ProductoCategoriaController extends Controller
 			return response()->json([
                 'message'=>'No se encuentra un Categoria Producto con ese código.'],404);
 		}
-		return response()->json(['status'=>'ok','data'=>$producto_categoria],200);
+		return response()->json(['data' => $producto_categoria],200);
     }
 
     public function porProducto($id_producto)
@@ -125,7 +125,7 @@ class ProductoCategoriaController extends Controller
 			return response()->json([
                 'message'=>'No se encuentra un Categoria Producto con ese código.'],404);
 		}
-		return response()->json(['status'=>'ok','data'=>$producto_categoria],200);
+		return response()->json(['data' => $producto_categoria],200);
     }
 
     public function porFecha($fecha)
@@ -141,7 +141,7 @@ class ProductoCategoriaController extends Controller
 			return response()->json([
                 'message'=>'No se encuentra un Categoria Producto con ese código.'],404);
 		}
-		return response()->json(['status'=>'ok','data'=>$producto_categoria],200);
+		return response()->json(['data' => $producto_categoria],200);
     }
 
     public function destroy($id_categoria, $id_producto)

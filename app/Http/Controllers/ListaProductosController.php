@@ -32,7 +32,8 @@ class ListaProductosController extends Controller
         $validator = Validator::make($request->all(), [
             'id_producto' => 'required|exists:productos,id',
             'id_bar' => 'required|exists:bars,id',
-            'precio' => 'required|numeric'
+            'precio' => 'required|numeric',
+            'img' => 'nullable|image|mimes:jpeg,png,jpg,svg|max:2048'
         ]);
         if ($validator->fails()) { 
             return response()->json(['error'=>$validator->errors()], 401);            
@@ -50,14 +51,29 @@ class ListaProductosController extends Controller
 		}
 
         $lista_productos = new lista_productos([      
-            'id_producto' => $request->id_producto,
-            'id_bar'  => $request->id_bar,
-            'precio'  => $request->precio
+            'id_producto'   => $request->id_producto,
+            'id_bar'        => $request->id_bar,
+            'precio'        => $request->precio
         ]);
 
+        $imageName = null;
+
+        if(($request->img) != null){
+            $t = time();
+            $imageName = $t.'_'.$request->id_bar.'_'.$request->id_producto.'.'.$request->img->extension();
+            $request->img->move(public_path('imgs/productos_bar'), $imageName);
+            $lista_productos->img = 'imgs/productos_bar/'.$imageName;
+        }
+
+        /*if(($request->file('img')) != null){
+            $t = time();
+            $imageName = $t.'_'.$request->id_bar.'_'.$request->id_producto.'.'.$request->file('img')->extension();
+            $request->file('img')->move(public_path('imgs/productos_bar'), $imageName);
+            $lista_productos->img = 'imgs/productos_bar/'.$imageName;
+        } */       
+
         $lista_productos->save();
-        return response()->json([
-            'message' => 'lista_productos Registrada'], 200);
+        return response()->json(['message' => 'lista_productos Registrada'], 200);
     }
 
     public function show($id_bar, $id_producto)
@@ -97,14 +113,29 @@ class ListaProductosController extends Controller
             ], 404);
 		}
 
+        $imageName = null;
+
+        if(($request->img) != null){
+            $dirimgs = public_path().'/'. $lista_productos->img;
+            @unlink($dirimgs);
+
+            $t = time();
+            $imageName = $t.'_'.$request->id_bar.'_'.$request->id_producto.'.'.$request->img->extension();
+            $request->img->move(public_path('imgs/productos_bar'), $imageName);
+            $lista_productos = lista_productos::where([
+                ['id_producto', '=', $request->id_producto],
+                ['id_bar', '=', $request->id_bar],
+            ])            
+            ->update(['img'  => 'imgs/productos_bar/'.$imageName]);
+        }
+
         $lista_productos = lista_productos::where([
             ['id_producto', '=', $request->id_producto],
             ['id_bar', '=', $request->id_bar],
         ])            
         ->update(['precio'  => $request->precio]);
 
-        return response()->json([
-            'message' => 'lista_productos Actualizada'], 200);
+        return response()->json(['message' => 'lista_productos Actualizada'], 200);
     }
 
     public function porBar($id_bar)
@@ -132,6 +163,9 @@ class ListaProductosController extends Controller
                 'message' => 'No se encuentra una lista_productos con ese código.'
             ], 404);
 		}
+	$dirimgs = public_path().'/'. $lista_productos->img;
+        @unlink($dirimgs);
+
         lista_productos::where([
             ['id_producto', '=', $id_producto],
             ['id_bar', '=', $id_bar],

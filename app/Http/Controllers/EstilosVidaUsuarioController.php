@@ -18,7 +18,7 @@ class EstilosVidaUsuarioController extends Controller
         $EstilosVidaUsuario = EstilosVidaUsuario::join('estilos_vidas', 'estilos_vidas.id', '=', 'estilos_vida_usuarios.id_estilo_vida')
             ->select('estilos_vida_usuarios.*', 'estilos_vidas.nombre')
             ->get();
-        return response()->json(['status'=>'ok','data'=>$EstilosVidaUsuario], 200);
+        return response()->json([ "data" => $EstilosVidaUsuario], 200);
     }
 
     /**
@@ -71,7 +71,7 @@ class EstilosVidaUsuarioController extends Controller
 			return response()->json([
                 'message'=>'No se encuentra una Alergia del Usuario con ese código.'],404);
 		}
-		return response()->json(['status'=>'ok','data'=>$estilo_vida_usuario],200);
+		return response()->json([ "data" => $estilo_vida_usuario],200);
     }
 
     public function porUsuario($id_usuario)
@@ -84,7 +84,7 @@ class EstilosVidaUsuarioController extends Controller
 			return response()->json([
                 'message'=>'No se encuentra una Alergia del Usuario con ese código.'],404);
 		}
-		return response()->json(['status'=>'ok','data'=>$estilo_vida_usuario],200);
+		return response()->json([ "data" => $estilo_vida_usuario],200);
     }
 
     public function destroy($id_usuario, $id_cat_al)

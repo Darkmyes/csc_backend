@@ -39,7 +39,8 @@ class BarController extends Controller
         $validator = Validator::make($request->all(), [
             'nombre'  => 'string|required',
             'id_usuario' => 'required|exists:users,id',
-            'celular' => 'string|required'
+            'celular' => 'string|required',
+            'img' => 'nullable|image|mimes:jpeg,png,jpg,svg|max:2048'
         ]);
         if ($validator->fails()) { 
             return response()->json(['error'=>$validator->errors()], 401);            
@@ -50,6 +51,15 @@ class BarController extends Controller
             'id_usuario' => $request->id_usuario,
             'celular' => $request->celular,
         ]);
+
+	$imageName = null;
+
+        if(($request->img) != null){
+            $t = time();
+            $imageName = $t.'_'.$request->id_usuario.$request->img->extension();
+            $request->img->move(public_path('imgs/bares/'), $imageName);
+            $bar->img = 'imgs/bares/'.$imageName;
+        }
 
         $bar->save();
         return response()->json([
@@ -114,10 +124,25 @@ class BarController extends Controller
         $validator = Validator::make($request->all(), [
             'nombre'  => 'string|required'
         ]);
-        if ($validator->fails()) { 
+        if ($validator->fails()) {
             return response()->json(['error'=>$validator->errors()], 401);            
         }
-        
+
+        if (isset($request->celular)) {
+            $bar->celular = $request->celular;
+        }
+
+	$imageName = null;
+
+        if(($request->img) != null){
+	    $dirimgs = public_path().'/'. $bar->img;
+            @unlink($dirimgs);
+            $t = time();
+            $imageName = $t.'_'.$request->id_usuario.$request->img->extension();
+            $request->img->move(public_path('imgs/bares/'), $imageName);
+            $bar->img = 'imgs/bares/'.$imageName;
+        }
+
         $bar->nombre = $request->nombre;
         $bar->save();
 
@@ -133,6 +158,11 @@ class BarController extends Controller
                 'message' => 'No se encuentra una bar con ese código.'
             ], 404);
 		}
+	if($bar->img != null) {
+		$dirimgs = public_path().'/'. $bar->img;
+	        @unlink($dirimgs);
+	}
+
         $bar->delete();
         return response()->json([
             'message' => 'bar Eliminada'], 200);
