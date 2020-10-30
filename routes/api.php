@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 Route::post('login', 'API\UserController@login');
 Route::post('register', 'API\UserController@register');
 
+Route::get('email/verify/{id}/{hash}','API\UserController@verifyUser')->name('verification.verify');
 //Route::get('validar_email/{id}/{hash}', 'Auth\VerificationController@verify')->name('verification.verify');
 
 //Route::post('refreshtoken', 'API\UserController@refreshToken');

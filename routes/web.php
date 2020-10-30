@@ -16,8 +16,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-
+Route::get('email/verify/{id}/{hash}','API\UserController@verifyUser')->name('verification.verify');
 Auth::routes(['verify' => true]);
+Route::get('email/verify/{id}/{hash}','API\UserController@verifyUser')->name('verification.verify');
 /*
 Route::get('profile', function () {
 })->middleware('verified'); */

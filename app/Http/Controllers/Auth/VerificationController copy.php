@@ -6,8 +6,10 @@ use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\VerifiesEmails;
 use App\User;
+
 use Illuminate\Http\Request;
 
+//use App\Http\Requests\Request;
 class VerificationController extends Controller
 {
     /*
