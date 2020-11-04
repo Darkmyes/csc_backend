@@ -22,6 +22,7 @@ class CreateUsersTable extends Migration
             $table->bigInteger('id_tipo_usuario')->constrained('tipo_usuarios')->onUpdate('cascade')->onDelete('restrict');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password',100);
+            $table->boolean('aprobado');
             $table->rememberToken();
             $table->timestamps();
         });

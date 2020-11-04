@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Validator;
 use Illuminate\Auth\Events\Verified;
+use App\tipo_usuario;
 //use Illuminate\Support\Facades\Auth;
 /* use Laravel\Passport\Client as OClient;
 use GuzzleHttp\Client;
@@ -27,6 +28,9 @@ public $successStatus = 200;
             $user = Auth::user();
             if($user->email_verified_at == null) {
                 return response()->json(['advertencia' => 'Valide Correo Electrónico primero']); 
+            }
+            if($user->aprobado == false) {
+                return response()->json(['advertencia' => 'Usuario Administrador aun no aprobado']); 
             }
             $success['token'] =  $user->createToken('MyApp')-> accessToken; 
             return response()->json(['success' => $success], $this-> successStatus); 
@@ -48,7 +52,7 @@ public $successStatus = 200;
             'apellidos' => 'required', 
             'email' => 'required|email|unique:users', 
             'password' => 'required', 
-            'c_password' => 'required|same:password', 
+            'c_password' => 'required|same:password'
         ]);
         if ($validator->fails()) { 
             return response()->json(['error'=>$validator->errors()], 401);            
@@ -57,6 +61,13 @@ public $successStatus = 200;
 
         $input['password'] = bcrypt($input['password']); 
         $user = User::create($input);
+        $user->aprobado = true;
+        
+        $tipoUsuario = tipo_usuario::find($request->id_tipo_usuario);
+
+        if( strtolower($tipoUsuario->nombre == 'administrador') || strtolower($tipoUsuario->nombre) == 'admin') {
+            $user->aprobado = false;
+        }
         
         $success['token'] =  $user->createToken('MyApp')-> accessToken; 
 
