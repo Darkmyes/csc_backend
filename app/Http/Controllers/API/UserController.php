@@ -60,15 +60,16 @@ public $successStatus = 200;
         $input = $request->all(); 
 
         $input['password'] = bcrypt($input['password']); 
-        $user = User::create($input);
-        $user->aprobado = true;
+        //$user = User::create($input);
+        $input['aprobado'] = true;
         
         $tipoUsuario = tipo_usuario::find($request->id_tipo_usuario);
 
-        if( strtolower($tipoUsuario->nombre == 'administrador') || strtolower($tipoUsuario->nombre) == 'admin') {
-            $user->aprobado = false;
+        if( strtolower($tipoUsuario->nombre) == 'administrador' || strtolower($tipoUsuario->nombre) == 'admin'
+		|| strtolower($tipoUsuario->nombre) == 'profesional salud' || strtolower($tipoUsuario->nombre == 'profesional de la salud')) {
+            $input['aprobado'] = false;
         }
-        
+        $user = User::create($input);
         $success['token'] =  $user->createToken('MyApp')-> accessToken; 
 
        /*  $verifyToken = sha1(time());
