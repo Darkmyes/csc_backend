@@ -44,6 +44,14 @@ class ActividadesCuarentenaController extends Controller
             return response()->json(['error'=>$validator->errors()], 401);            
         }
 
+	$al = actividades_cuarentena::where([['nombre','like', '%'.$request->nombre.'%'],
+		['id_usuario','=',$request->id_usuario]
+	])->get();
+        if (count($al) > 0) {
+                return response()->json([
+                'message'=>'Ya se encuentra una Actividad de Cuarentena con ese Nombre'],404);
+        }
+
         $actividades_cuarentena = new actividades_cuarentena([      
             'nombre'  => $request->nombre,
             'id_usuario' => $request->id_usuario,

@@ -43,6 +43,12 @@ class EnfermedadesController extends Controller
             return response()->json(['error'=>$validator->errors()], 401);            
         }
 
+	$al = enfermedades::where('nombre','like', '%'.$request->nombre.'%')->get();
+        if (count($al) > 0) {
+                return response()->json([
+                'message'=>'Ya se encuentra una Enfermedad con ese Nombre'],404);
+        }
+
         $enfermedad = new enfermedades([      
             'nombre'  => $request->nombre
         ]);

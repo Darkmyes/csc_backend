@@ -43,6 +43,12 @@ class AlergiasController extends Controller
             return response()->json(['error'=>$validator->errors()], 401);            
         }
 
+	$al = alergias::where('nombre','like', '%'.$request->nombre.'%')->get();
+	if (count($al) > 0) {
+		return response()->json([
+                'message'=>'Ya se encuentra una Alergia con ese Nombre'],404);
+	}
+
         $alergias = new alergias([      
             'nombre'  => $request->nombre
         ]);

@@ -43,6 +43,12 @@ class EstilosVidaController extends Controller
             return response()->json(['error'=>$validator->errors()], 401);            
         }
 
+	$al = estilos_vida::where('nombre','like', '%'.$request->nombre.'%')->get();
+        if (count($al) > 0) {
+                return response()->json([
+                'message'=>'Ya se encuentra un Estilo de Vida con ese Nombre'],404);
+        }
+
         $estilos_vidas = new estilos_vida([      
             'nombre'  => $request->nombre
         ]);

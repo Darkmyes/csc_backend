@@ -44,6 +44,14 @@ class AlimentosCuarentenaController extends Controller
             return response()->json(['error'=>$validator->errors()], 401);            
         }
 
+	$al = alimentos_cuarentena::where([['nombre','like', '%'.$request->nombre.'%'],
+                ['id_usuario','=',$request->id_usuario]
+        ])->get();
+        if (count($al) > 0) {
+                return response()->json([
+                'message'=>'Ya se encuentra un Alimento de Cuarentena con ese Nombre'],404);
+        }
+
         $alimentos_cuarentena = new alimentos_cuarentena([      
             'nombre'  => $request->nombre,
             'id_usuario' => $request->id_usuario,

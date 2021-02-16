@@ -19,6 +19,7 @@ Route::group(['middleware' => ['CheckClientCredentials','auth:api']], function()
     Route::post('logout', 'API\UserController@logout');
     Route::post('details', 'API\UserController@details');
     Route::post('usuario/cambiar_pass', 'API\UserController@cambiarPass');
+    Route::put('usuario', 'API\UserController@edit');
 });
 // TIPOS DE USUARIO
 Route::resource('tipo_usuario','TipoUsuarioController',  ['only' => [
